@@ -1,4 +1,4 @@
-import { useLayoutEffect, useRef, useState, type ReactNode } from "react";
+import { useLayoutEffect, useRef, useState } from "react";
 import { portfolio } from "@/data";
 import type { ExperienceItem } from "@/types/portfolio";
 import { Badge } from "@/components/ui/badge";
@@ -8,6 +8,8 @@ import {
   NotionHeading,
   NotionSubheading,
 } from "@/components/notion/NotionBlock";
+import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
+import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
 import { cn } from "@/lib/utils";
 import { MapPin } from "lucide-react";
@@ -74,11 +76,28 @@ function getContentAreaHeight() {
 }
 
 function ExperienceDetail({ item }: { item: ExperienceItem }) {
-  const rows: { label: string; value: ReactNode }[] = [
+  const rows: NotionPropertyRow[] = [
     { label: "Company", value: item.company },
     { label: "Role", value: item.role },
     { label: "Period", value: item.period },
     { label: "Location", value: item.location },
+    ...(item.credential
+      ? [
+          {
+            label: item.credential.label,
+            value: (
+              <a
+                href={item.credential.href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="break-all text-primary hover:underline"
+              >
+                {item.credential.href.replace(/^https?:\/\//, "")}
+              </a>
+            ),
+          },
+        ]
+      : []),
   ];
 
   return (
@@ -88,21 +107,7 @@ function ExperienceDetail({ item }: { item: ExperienceItem }) {
         <h2 className="text-xl font-bold">{item.company}</h2>
       </div>
 
-      <div className="overflow-hidden rounded-lg border border-border">
-        <div className="grid grid-cols-[minmax(100px,0.9fr)_minmax(0,1.6fr)] bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground">
-          <span>Property</span>
-          <span>Value</span>
-        </div>
-        {rows.map((row) => (
-          <div
-            key={row.label}
-            className="grid grid-cols-[minmax(100px,0.9fr)_minmax(0,1.6fr)] gap-3 px-3 py-2.5 text-sm"
-          >
-            <span className="text-muted-foreground">{row.label}</span>
-            <div className="min-w-0 leading-relaxed">{row.value}</div>
-          </div>
-        ))}
-      </div>
+      <NotionPropertyTable rows={rows} />
 
       <div>
         <NotionSubheading>Description</NotionSubheading>

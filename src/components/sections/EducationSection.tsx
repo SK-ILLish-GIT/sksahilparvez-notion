@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useRef, useState, type ReactNode } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { portfolio } from "@/data";
 import type { EducationItem } from "@/types/portfolio";
 import {
@@ -19,6 +19,8 @@ import {
   NotionHeading,
   NotionSubheading,
 } from "@/components/notion/NotionBlock";
+import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
+import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
 import { cn } from "@/lib/utils";
 
@@ -57,7 +59,7 @@ function periodLabel(edu: EducationItem) {
 }
 
 function EducationDetail({ edu }: { edu: EducationItem }) {
-  const rows: { label: string; value: ReactNode }[] = [
+  const rows: NotionPropertyRow[] = [
     { label: "Institution", value: edu.institution },
     { label: "Degree", value: edu.degree },
     { label: "Period", value: periodLabel(edu) },
@@ -84,21 +86,7 @@ function EducationDetail({ edu }: { edu: EducationItem }) {
         <h2 className="text-xl font-bold">{edu.shortTitle}</h2>
       </div>
 
-      <div className="overflow-hidden rounded-lg border border-border">
-        <div className="grid grid-cols-[minmax(100px,0.9fr)_minmax(0,1.6fr)] bg-muted/40 px-3 py-2 text-xs font-medium text-muted-foreground">
-          <span>Property</span>
-          <span>Value</span>
-        </div>
-        {rows.map((row) => (
-          <div
-            key={row.label}
-            className="grid grid-cols-[minmax(100px,0.9fr)_minmax(0,1.6fr)] gap-3 px-3 py-2.5 text-sm"
-          >
-            <span className="text-muted-foreground">{row.label}</span>
-            <div className="min-w-0 leading-relaxed">{row.value}</div>
-          </div>
-        ))}
-      </div>
+      <NotionPropertyTable rows={rows} />
 
       <div>
         <NotionSubheading>Description</NotionSubheading>

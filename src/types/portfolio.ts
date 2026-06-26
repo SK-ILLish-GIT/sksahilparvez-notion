@@ -26,6 +26,7 @@ export interface ExperienceItem {
   description: string;
   metric?: { label: string; value: string };
   logo?: string;
+  credential?: { label: string; href: string };
 }
 
 export interface ProjectItem {
