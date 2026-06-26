@@ -84,12 +84,61 @@ export interface Certification {
   link?: string;
 }
 
+export interface CpProfileLink {
+  handle: string;
+  href: string;
+}
+
 export interface Achievement {
   platform: string;
+  codolioPlatform: string;
+  /** Profile used for table rating + redirect link */
+  ratingProfile: CpProfileLink;
+  /** Profile used for problem/topic counts in charts */
+  countProfile: CpProfileLink;
+  /** Static rating when ratingProfile !== countProfile, or fallback */
   rating: string;
-  bestRank: string;
-  handle: string;
-  highlight?: boolean;
+  /** Static contest global ranks (best first when sorted ascending) */
+  bestRanks: number[];
+  logo?: string;
+  /** Fallback problem count when Codolio API is unavailable */
+  fallbackProblems?: number;
+}
+
+export interface CpTableRow {
+  platform: string;
+  displayHandle: string;
+  displayHref: string;
+  rating: string;
+  bestRanks: number[];
+  logo?: string;
+  isLive: boolean;
+}
+
+export interface CpProblemSlice {
+  platform: string;
+  count: number;
+  logo?: string;
+  fill: string;
+}
+
+export interface CpTopicEntry {
+  topic: string;
+  count: number;
+}
+
+export interface CpTopicPlatformSection {
+  platform: string;
+  codolioPlatform: string;
+  logo?: string;
+  rawTopics: CpTopicEntry[];
+}
+
+export interface CpSectionData {
+  tableRows: CpTableRow[];
+  problemBreakdown: CpProblemSlice[];
+  topicBreakdownByPlatform: CpTopicPlatformSection[];
+  totalProblems: number;
 }
 
 export interface ContactLink {

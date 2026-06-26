@@ -1,0 +1,196 @@
+{
+  "categories": [
+    {
+      "name": "Arrays & Matrix",
+      "shortLabel": "Arrays",
+      "color": "#f59e0b",
+      "tags": [
+        "arrays",
+        "matrix",
+        "matrices",
+        "simulation",
+        "enumeration",
+        "prefix sum",
+        "prefix-sum",
+        "misc"
+      ]
+    },
+    {
+      "name": "Linked Lists",
+      "shortLabel": "Linked\nLists",
+      "color": "#eab308",
+      "tags": ["linked lists", "doubly-linked-list", "doubly linked list"]
+    },
+    {
+      "name": "Strings",
+      "shortLabel": "Strings",
+      "color": "#84cc16",
+      "tags": [
+        "string",
+        "strings",
+        "rolling hash",
+        "data stream",
+        "pattern searching"
+      ]
+    },
+    {
+      "name": "Sorting & Searching",
+      "shortLabel": "Sorting",
+      "color": "#22c55e",
+      "tags": [
+        "sorting",
+        "sortings",
+        "binary search",
+        "searching",
+        "quickselect",
+        "divide and conquer",
+        "ternary search"
+      ]
+    },
+    {
+      "name": "Greedy",
+      "shortLabel": "Greedy",
+      "color": "#10b981",
+      "tags": ["greedy algorithms", "greedy"]
+    },
+    {
+      "name": "Stacks, Queues & Heaps",
+      "shortLabel": "Stacks/\nQueues",
+      "color": "#14b8a6",
+      "tags": [
+        "queue and stacks",
+        "monotonic stack",
+        "monotonic queue",
+        "heaps and maps"
+      ]
+    },
+    {
+      "name": "Hashing & Sets",
+      "shortLabel": "Hashing",
+      "color": "#06b6d4",
+      "tags": ["hashmap and set", "ordered set", "hashing"]
+    },
+    {
+      "name": "Math & Number Theory",
+      "shortLabel": "Math",
+      "color": "#0ea5e9",
+      "tags": [
+        "math",
+        "maths",
+        "mathematical",
+        "number theory",
+        "combinatorics",
+        "geometry",
+        "games",
+        "game theory",
+        "probabilities",
+        "schedules",
+        "brainteaser",
+        "numbers",
+        "prime number",
+        "fibonacci",
+        "sieve"
+      ]
+    },
+    {
+      "name": "Two Pointers & Sliding Window",
+      "shortLabel": "Two Ptr\n& Sliding",
+      "color": "#3b82f6",
+      "tags": [
+        "two pointers",
+        "two pointer algorithm",
+        "two-pointer-algorithm",
+        "sliding window",
+        "sliding-window"
+      ]
+    },
+    {
+      "name": "Dynamic Programming & Backtracking",
+      "shortLabel": "DP &\nBacktrack",
+      "color": "#6366f1",
+      "tags": ["dynamic programming", "dp", "backtracking", "recursion"]
+    },
+    {
+      "name": "Graphs & Traversal",
+      "shortLabel": "Graphs",
+      "color": "#8b5cf6",
+      "tags": [
+        "graph theory",
+        "graphs",
+        "dfs",
+        "bfs",
+        "dfs and similar",
+        "shortest path",
+        "shortest paths",
+        "topological sort",
+        "union-find",
+        "union & find",
+        "dsu",
+        "graph matchings",
+        "2-sat"
+      ]
+    },
+    {
+      "name": "Trees",
+      "shortLabel": "Trees",
+      "color": "#a855f7",
+      "tags": [
+        "trees",
+        "binary tree",
+        "trie",
+        "segment tree",
+        "binary indexed tree",
+        "design",
+        "binary search tree",
+        "avl-tree",
+        "avl tree",
+        "traversal",
+        "advanced data structure"
+      ]
+    },
+    {
+      "name": "Bit Manipulation",
+      "shortLabel": "Bits",
+      "color": "#d946ef",
+      "tags": ["bit manipulation", "bitmask", "bitmasks", "bit magic"]
+    },
+    {
+      "name": "Time Complexity",
+      "shortLabel": "Time\nComplexity",
+      "color": "#ec4899",
+      "tags": ["time complexity"]
+    },
+    {
+      "name": "Implementation & Constructive",
+      "shortLabel": "Implement.",
+      "color": "#f43f5e",
+      "tags": [
+        "implementation",
+        "constructive algorithms",
+        "brute force",
+        "interactive"
+      ]
+    }
+  ],
+  "excludedTags": [
+    "algorithms",
+    "database",
+    "data structures",
+    "*special",
+    "design pattern",
+    "design-pattern"
+  ],
+  "platformExclusions": [
+    { "platform": "geeksforgeeks", "tag": "algorithms" },
+    { "platform": "codeforces", "tag": "data structures" },
+    { "platform": "leetcode", "tag": "database" }
+  ],
+  "platformChartColors": {
+    "all": "#6366f1",
+    "LeetCode": "#f59e0b",
+    "Codeforces": "#3b82f6",
+    "CodeChef": "#10b981",
+    "GFG": "#059669",
+    "InterviewBit": "#8b5cf6"
+  }
+}

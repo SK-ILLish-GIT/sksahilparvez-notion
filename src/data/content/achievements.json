@@ -1,27 +1,82 @@
 [
   {
-    "platform": "Overall",
-    "rating": "1600+",
-    "bestRank": "—",
-    "handle": "DSA problems solved",
-    "highlight": true
-  },
-  {
-    "platform": "CodeChef",
-    "rating": "4★",
-    "bestRank": "#50",
-    "handle": "Pir0_Coder"
+    "platform": "LeetCode",
+    "codolioPlatform": "leetcode",
+    "ratingProfile": {
+      "handle": "Fibonacci_lc",
+      "href": "https://leetcode.com/u/Fibonacci_lc/"
+    },
+    "countProfile": {
+      "handle": "Fibonacci_lc",
+      "href": "https://leetcode.com/u/Fibonacci_lc/"
+    },
+    "rating": "Knight",
+    "bestRanks": [560, 570, 776],
+    "logo": "/logos/platforms/leetcode.png",
+    "fallbackProblems": 790
   },
   {
     "platform": "Codeforces",
+    "codolioPlatform": "codeforces",
+    "ratingProfile": {
+      "handle": "foolcoder",
+      "href": "https://codeforces.com/profile/foolcoder"
+    },
+    "countProfile": {
+      "handle": "sksahilparvez",
+      "href": "https://codeforces.com/profile/sksahilparvez"
+    },
     "rating": "Specialist",
-    "bestRank": "#1260",
-    "handle": "foolcoder"
+    "bestRanks": [1260, 1770, 2081, 2110],
+    "logo": "/logos/platforms/codeforces.png",
+    "fallbackProblems": 497
   },
   {
-    "platform": "LeetCode",
-    "rating": "Knight",
-    "bestRank": "#560",
-    "handle": "Fibonacci_lc"
+    "platform": "CodeChef",
+    "codolioPlatform": "codechef",
+    "ratingProfile": {
+      "handle": "pir0_coder",
+      "href": "https://www.codechef.com/users/pir0_coder"
+    },
+    "countProfile": {
+      "handle": "sk_sahil_18593",
+      "href": "https://www.codechef.com/users/sk_sahil_18593"
+    },
+    "rating": "4★",
+    "bestRanks": [50, 89, 212, 370, 398],
+    "logo": "/logos/platforms/codechef.png",
+    "fallbackProblems": 68
+  },
+  {
+    "platform": "GFG",
+    "codolioPlatform": "geeksforgeeks",
+    "ratingProfile": {
+      "handle": "sksahilparvez",
+      "href": "https://www.geeksforgeeks.org/profile/sksahilparvez?tab=activity"
+    },
+    "countProfile": {
+      "handle": "sksahilparvez",
+      "href": "https://www.geeksforgeeks.org/profile/sksahilparvez?tab=activity"
+    },
+    "rating": "—",
+    "bestRanks": [],
+    "logo": "/logos/platforms/geeksforgeeks.svg",
+    "fallbackProblems": 148
+  },
+  {
+    "platform": "InterviewBit",
+    "codolioPlatform": "interviewbit",
+    "ratingProfile": {
+      "handle": "sk-sahil-parvez",
+      "href": "https://www.interviewbit.com/profile/sk-sahil-parvez/"
+    },
+    "countProfile": {
+      "handle": "sk-sahil-parvez",
+      "href": "https://www.interviewbit.com/profile/sk-sahil-parvez/"
+    },
+    "rating": "—",
+    "bestRanks": [],
+    "logo": "/logos/platforms/interviewbit.ico",
+    "fallbackProblems": 211
   }
 ]
