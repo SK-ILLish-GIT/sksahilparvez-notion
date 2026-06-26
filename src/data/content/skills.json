@@ -1,0 +1,50 @@
+[
+  {
+    "id": "frontend-backend",
+    "label": "Frontend & Backend",
+    "items": [
+      "React.js",
+      "Next.js",
+      "TypeScript",
+      "Node.js",
+      "Express.js",
+      "Java Spring Boot",
+      "REST APIs"
+    ]
+  },
+  {
+    "id": "databases",
+    "label": "Databases",
+    "items": ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Prisma"]
+  },
+  {
+    "id": "devops",
+    "label": "DevOps & Observability",
+    "items": [
+      "Docker",
+      "CI/CD",
+      "OpenTelemetry",
+      "Prometheus",
+      "Grafana",
+      "Loki",
+      "Tempo"
+    ]
+  },
+  {
+    "id": "languages",
+    "label": "Languages",
+    "items": ["C++", "Java", "Python", "JavaScript", "TypeScript", "Bash"]
+  },
+  {
+    "id": "concepts",
+    "label": "Concepts",
+    "items": [
+      "Data Structures",
+      "OOP",
+      "Operating Systems",
+      "DBMS",
+      "System Design",
+      "Distributed Systems"
+    ]
+  }
+]

@@ -1,0 +1,21 @@
+[
+  { "id": "hero", "label": "Home", "icon": "🏠", "visible": true },
+  { "id": "about", "label": "About", "icon": "💡", "visible": true },
+  { "id": "education", "label": "Education", "icon": "🎓", "visible": true },
+  { "id": "experience", "label": "Experience", "icon": "💼", "visible": true },
+  { "id": "projects", "label": "Projects", "icon": "🚀", "visible": true },
+  { "id": "skills", "label": "Skills", "icon": "🧠", "visible": true },
+  {
+    "id": "certifications",
+    "label": "Certifications",
+    "icon": "📜",
+    "visible": true
+  },
+  {
+    "id": "achievements",
+    "label": "Competitive Programming",
+    "icon": "🏆",
+    "visible": true
+  },
+  { "id": "contact", "label": "Contact", "icon": "📬", "visible": true }
+]

@@ -1,0 +1,52 @@
+[
+  {
+    "id": "highspot",
+    "company": "Highspot",
+    "role": "Software Development Engineer",
+    "period": "Aug 2025 – Present",
+    "location": "Hyderabad",
+    "stack": ["React.js", "GraphQL", "TypeScript", "Ruby", "MongoDB"],
+    "highlights": [
+      "Created 25+ tiles, charts, and tables with drilldowns using React, GraphQL and Ruby for a team analytics scorecard.",
+      "Implemented Blueprint-Based Visualizations to generate charts from reports, covering 90% of existing bar charts.",
+      "Built an end-to-end RolePlay Scorecard from scaffold to dataviews, featuring advanced CRM filter integration.",
+      "Migrated 2 legacy scorecards to a new blueprint-based scorecard with charts and an enhanced People filter."
+    ],
+    "metric": { "label": "charts shipped", "value": "25+" }
+  },
+  {
+    "id": "zscaler",
+    "company": "Zscaler, Inc",
+    "role": "Software Development Engineer Intern",
+    "period": "Feb 2025 – Aug 2025",
+    "location": "Bangalore",
+    "stack": [
+      "Java Spring Boot",
+      "Python",
+      "Bash",
+      "OpenTelemetry",
+      "Pytest",
+      "CI/CD"
+    ],
+    "highlights": [
+      "Architected a complete pytest automation framework integrated with GitLab CI/CD, covering 50+ test cases.",
+      "Developed a sampling mechanism using Java Spring Boot and OTel v0.128.0 to efficiently collect and monitor performance.",
+      "Implemented PII masking to redact sensitive data in system logs and traces.",
+      "Achieved 91% data compression by evaluating 5 compression algorithms and implementing the most efficient one."
+    ],
+    "metric": { "label": "data compression", "value": "91%" }
+  },
+  {
+    "id": "fractal",
+    "company": "Fractal.ai",
+    "role": "Software Development Engineer Intern",
+    "period": "May 2024 – Jul 2024",
+    "location": "Remote",
+    "stack": ["React.js", "JavaScript", "Node.js", "MySQL"],
+    "highlights": [
+      "Architected automated test scripts using Codecept.js and Mocha.js to ensure a bug-free user experience.",
+      "Contributed to 2 projects utilizing React.js, Node.js and MySQL, enhancing front-end interfaces.",
+      "Tuned prompt engineering for 4 LLMs to achieve significant improvements in model outputs."
+    ]
+  }
+]

@@ -1,0 +1,23 @@
+[
+  {
+    "label": "Email",
+    "value": "sksahilparvez2000@gmail.com",
+    "href": "mailto:sksahilparvez2000@gmail.com"
+  },
+  { "label": "Phone", "value": "+91 98744 35806", "href": "tel:+919874435806" },
+  {
+    "label": "LinkedIn",
+    "value": "sk-sahil-parvez-iiita",
+    "href": "https://www.linkedin.com/in/sk-sahil-parvez-iiita/"
+  },
+  {
+    "label": "X",
+    "value": "@sahilparvez_sk",
+    "href": "https://x.com/sahilparvez_sk"
+  },
+  {
+    "label": "GitHub",
+    "value": "SK-ILLish-GIT",
+    "href": "https://github.com/SK-ILLish-GIT"
+  }
+]

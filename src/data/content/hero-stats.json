@@ -1,0 +1,6 @@
+[
+  { "id": "dsa", "label": "DSA problems", "value": 1600, "suffix": "+" },
+  { "id": "roles", "label": "roles shipped", "value": 3, "suffix": "" },
+  { "id": "services", "label": "microservices", "value": 10, "suffix": "+" },
+  { "id": "codechef", "label": "CodeChef", "value": 4, "suffix": "★" }
+]

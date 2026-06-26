@@ -1,0 +1,27 @@
+[
+  {
+    "platform": "Overall",
+    "rating": "1600+",
+    "bestRank": "—",
+    "handle": "DSA problems solved",
+    "highlight": true
+  },
+  {
+    "platform": "CodeChef",
+    "rating": "4★",
+    "bestRank": "#50",
+    "handle": "Pir0_Coder"
+  },
+  {
+    "platform": "Codeforces",
+    "rating": "Specialist",
+    "bestRank": "#1260",
+    "handle": "foolcoder"
+  },
+  {
+    "platform": "LeetCode",
+    "rating": "Knight",
+    "bestRank": "#560",
+    "handle": "Fibonacci_lc"
+  }
+]

@@ -1,0 +1,50 @@
+[
+  {
+    "id": "gamevault",
+    "name": "GameVault",
+    "tagline": "Distributed Gaming Platform",
+    "period": "Jan 2026 – Apr 2026",
+    "pageIcon": "🎮",
+    "stack": [
+      "TypeScript",
+      "React",
+      "Express",
+      "PostgreSQL",
+      "Prisma",
+      "MongoDB",
+      "Redis",
+      "OpenTelemetry"
+    ],
+    "links": {
+      "github": "https://github.com/SK-ILLish-GIT/games"
+    },
+    "featured": true,
+    "bentoSize": "large",
+    "coverGradient": "from-slate-600 to-slate-800",
+    "highlights": [
+      "Built a containerized gaming platform with a 10-service Docker Compose core stack and an 8-container observability overlay.",
+      "Exposed the system through a React SPA and an Nginx API gateway routing to 5 independent Express backend services.",
+      "Integrated 3 data stores: PostgreSQL (users/auth via Prisma), Redis (token rotation & leaderboard cache), MongoDB (game state).",
+      "Instrumented services with OpenTelemetry, Prometheus, Loki, Tempo, and 6 Grafana dashboards for full metrics/logs/traces correlation."
+    ]
+  },
+  {
+    "id": "pricetracker",
+    "name": "PriceTrackEr",
+    "tagline": "Automated price-drop alerts",
+    "period": "Nov 2024 – Jan 2025",
+    "pageIcon": "💰",
+    "stack": ["Next.js", "Tailwind CSS", "Node.js", "MongoDB", "Cron Jobs"],
+    "links": {
+      "github": "https://github.com/SK-ILLish-GIT/PriceTrackEr"
+    },
+    "featured": true,
+    "bentoSize": "small",
+    "coverGradient": "from-amber-500 to-orange-600",
+    "highlights": [
+      "Developed a price tracking website with automated price-drop alert functionality.",
+      "Integrated cron jobs for scheduled (7am daily) data scraping from Amazon, providing users with morning alerts.",
+      "Implemented AI-generated product descriptions (under 200 words each) for clarity and consistency."
+    ]
+  }
+]

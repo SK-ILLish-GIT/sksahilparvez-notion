@@ -1,0 +1,44 @@
+[
+  {
+    "id": "fde-iit-roorkee",
+    "text": "PG Certification in Forward Deployed Engineering (FDE) — IIT Roorkee.",
+    "title": "Forward Deployed Engineering (FDE)",
+    "issuer": "IIT Roorkee",
+    "period": "Pursuing",
+    "status": "in-progress",
+    "pageIcon": "🎓",
+    "description": "Postgraduate certification program focused on forward deployed engineering — bridging product development with customer-facing technical problem solving.",
+    "highlights": [
+      "Learning to deploy and integrate solutions directly with enterprise customers.",
+      "Building skills in rapid prototyping, system design, and cross-functional delivery."
+    ]
+  },
+  {
+    "id": "skillsoft-bash",
+    "text": "Skillsoft's Bash Scripting (Track 2) — automating common tasks with bash.",
+    "title": "Bash Scripting (Track 2)",
+    "issuer": "Skillsoft",
+    "period": "Completed",
+    "status": "done",
+    "pageIcon": "🐚",
+    "description": "Track 2 certification covering bash scripting for automating common system administration and development tasks.",
+    "highlights": [
+      "Automating file operations, process management, and shell workflows.",
+      "Writing reusable scripts for CI/CD and local development tooling."
+    ]
+  },
+  {
+    "id": "google-pm",
+    "text": "Google's Foundations of Project Management — Agile & risk analysis.",
+    "title": "Foundations of Project Management",
+    "issuer": "Google",
+    "period": "Completed",
+    "status": "done",
+    "pageIcon": "📋",
+    "description": "Google Career Certificate covering project management fundamentals, Agile methodologies, and risk analysis.",
+    "highlights": [
+      "Agile and Scrum frameworks for iterative delivery.",
+      "Risk identification, stakeholder communication, and project planning."
+    ]
+  }
+]

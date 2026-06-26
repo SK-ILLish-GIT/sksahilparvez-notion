@@ -1,0 +1,79 @@
+[
+  {
+    "id": "kankrai-gangadhar",
+    "institution": "Kankrai Gangadhar Shikhsayatan",
+    "shortTitle": "Kankrai Gangadhar",
+    "degree": "Class 9–10",
+    "startDate": "2015-04",
+    "endDate": "2017-03",
+    "location": "West Bengal",
+    "marks": "92%",
+    "marksLabel": "Percentage",
+    "status": "completed",
+    "statusLabel": "Completed",
+    "pageIcon": "📖",
+    "description": "Secondary education (Class 9–10) in West Bengal with consistent academic performance.",
+    "highlights": [
+      "Scored 92% in Class 10 board examinations.",
+      "Built early interest in mathematics and problem solving."
+    ]
+  },
+  {
+    "id": "deulpara-bhudharinath",
+    "institution": "Deulpara BhudhariNath Vidyaniketan",
+    "shortTitle": "Deulpara BhudhariNath",
+    "degree": "Class 11–12",
+    "startDate": "2017-04",
+    "endDate": "2019-03",
+    "location": "West Bengal",
+    "marks": "96.4%",
+    "marksLabel": "Percentage",
+    "rank": "State rank: 14",
+    "status": "completed",
+    "statusLabel": "Completed",
+    "pageIcon": "📚",
+    "description": "Higher secondary education (Class 11–12) with strong academic performance in West Bengal.",
+    "highlights": [
+      "Scored 96.4% aggregate in Class 12 board examinations.",
+      "Achieved State rank 14 among peers in the state."
+    ]
+  },
+  {
+    "id": "jee-preparation",
+    "institution": "Unacademy",
+    "shortTitle": "JEE Preparation",
+    "degree": "JEE Preparation",
+    "startDate": "2019-04",
+    "endDate": "2021-03",
+    "marks": "4982",
+    "marksLabel": "JEE Mains Rank (GEN)",
+    "rank": "WBJEE Rank: 247 (GEN)",
+    "status": "completed",
+    "statusLabel": "Completed",
+    "pageIcon": "🎯",
+    "description": "Intensive JEE preparation through Unacademy, focusing on problem solving, mock tests, and engineering entrance exam strategy.",
+    "highlights": [
+      "Secured JEE Mains rank 4982 (General category).",
+      "Achieved WBJEE rank 247 (General category)."
+    ]
+  },
+  {
+    "id": "iiita",
+    "institution": "Indian Institute of Information Technology, Allahabad",
+    "shortTitle": "IIIT Allahabad",
+    "degree": "B.Tech in Information Technology",
+    "period": "Jul 2021 – Jun 2025",
+    "startDate": "2021-07",
+    "endDate": "2025-06",
+    "marks": "8.53 / 10",
+    "marksLabel": "CGPA",
+    "status": "completed",
+    "statusLabel": "Completed",
+    "pageIcon": "🎓",
+    "description": "Bachelor's program in Information Technology with focus on software engineering, systems, and core CS fundamentals.",
+    "highlights": [
+      "Studied DSA, OS, DBMS, computer networks, and distributed systems.",
+      "Built strong foundation for full-stack and backend engineering roles."
+    ]
+  }
+]

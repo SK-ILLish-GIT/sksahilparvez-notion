@@ -1,0 +1,23 @@
+{
+  "name": "SK Sahil Parvez",
+  "title": "Software Engineer",
+  "pageIcon": "👨‍💻",
+  "tagline": "Building analytics platforms, observability systems & scalable backends.",
+  "summary": "Software Engineer with experience building analytics platforms, observability systems, and distributed backend services using React.js, GraphQL, Node.js, Java Spring Boot, and OpenTelemetry. Skilled in CI/CD automation, telemetry pipelines, and scalable microservices architecture.",
+  "taglineRotation": [
+    "analytics platforms",
+    "observability pipelines",
+    "distributed backends"
+  ],
+  "properties": [
+    {
+      "label": "Status",
+      "value": "Open to chat",
+      "type": "status",
+      "color": "green"
+    },
+    { "label": "Role", "value": "Software Engineer", "type": "text" },
+    { "label": "Location", "value": "Hyderabad, India", "type": "text" },
+    { "label": "Currently", "value": "Highspot", "type": "text" }
+  ]
+}
