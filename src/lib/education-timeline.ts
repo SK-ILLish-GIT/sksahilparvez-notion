@@ -2,7 +2,32 @@ import type { EducationItem } from "@/types/portfolio";
 
 export const TIMELINE_WINDOW_YEARS = 8;
 export const TIMELINE_FORWARD_YEARS = 2;
+export const TIMELINE_START = "1999-01-01";
 export const BIRTHDATE = "2000-07-12";
+
+export interface TimelineMilestone {
+  date: string;
+  /** Shown in captions, e.g. "Feb 2010" */
+  displayDate: string;
+  label: string;
+  icon: string;
+  lineClass: string;
+  badgeClass: string;
+}
+
+export const BIRTHDAY_DISPLAY_DATE = "Jul 12, 2000";
+export const BIRTHDAY_CAPTION = `🎂 ${BIRTHDAY_DISPLAY_DATE} — My Birthday`;
+
+export const TIMELINE_MILESTONES: TimelineMilestone[] = [
+  {
+    date: "2010-02-01",
+    displayDate: "Feb 2010",
+    label: "I met Her",
+    icon: "💕",
+    lineClass: "bg-rose-400",
+    badgeClass: "bg-rose-400",
+  },
+];
 
 export interface TimelineLayout {
   left: number;
@@ -36,11 +61,12 @@ export function getCurrentYearFraction(): number {
 }
 
 export const BIRTHDATE_FRACTION = parseYearFraction(BIRTHDATE);
+export const TIMELINE_START_FRACTION = parseYearFraction(TIMELINE_START);
 
 export function getAbsoluteLimits() {
   const today = getCurrentYearFraction();
   return {
-    minStart: BIRTHDATE_FRACTION,
+    minStart: TIMELINE_START_FRACTION,
     maxStart: today + TIMELINE_FORWARD_YEARS - TIMELINE_WINDOW_YEARS,
     today,
   };
@@ -48,7 +74,7 @@ export function getAbsoluteLimits() {
 
 export function getFullTimelineBounds(): TimelineBounds {
   const today = getCurrentYearFraction();
-  const min = BIRTHDATE_FRACTION;
+  const min = TIMELINE_START_FRACTION;
   const max = today + TIMELINE_FORWARD_YEARS;
   return { min, max, span: max - min };
 }
@@ -160,4 +186,8 @@ export function toContentPosition(
 export function formatViewRange(bounds: TimelineBounds): string {
   const fmt = (v: number) => String(Math.floor(v));
   return `${fmt(bounds.min)} – ${fmt(bounds.max)}`;
+}
+
+export function milestoneCaption(milestone: TimelineMilestone): string {
+  return `${milestone.icon} ${milestone.label}`;
 }

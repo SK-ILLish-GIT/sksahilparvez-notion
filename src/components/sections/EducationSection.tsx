@@ -3,13 +3,17 @@ import { portfolio } from "@/data";
 import type { EducationItem } from "@/types/portfolio";
 import {
   BIRTHDATE_FRACTION,
+  TIMELINE_MILESTONES,
   getCurrentYearFraction,
   getDefaultScrollLeft,
   getFullTimelineBounds,
   getMarkerPosition,
   getRowCount,
+  BIRTHDAY_CAPTION,
   getYearMarkersPx,
   layoutEducationTimelinePx,
+  milestoneCaption,
+  parseYearFraction,
 } from "@/lib/education-timeline";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -31,6 +35,9 @@ const TABLE_HEADER_HEIGHT = 32;
 const TABLE_ROW_HEIGHT = 36;
 const PX_PER_YEAR = 72;
 const CANVAS_PADDING = 20;
+const MILESTONE_REVEAL_MS = 1000;
+const MILESTONE_FADE_MS = 400;
+const BIRTHDAY_REVEAL_MS = 3000;
 
 type ViewMode = "gantt" | "table";
 
@@ -113,8 +120,26 @@ function EducationDetail({ edu }: { edu: EducationItem }) {
 export function EducationSection() {
   const [view, setView] = useState<ViewMode>("gantt");
   const [selected, setSelected] = useState<EducationItem | null>(null);
-  const [atBirthLimit, setAtBirthLimit] = useState(false);
+  const [birthdayActive, setBirthdayActive] = useState(false);
+  const [birthdayVisible, setBirthdayVisible] = useState(false);
+  const [revealedMilestone, setRevealedMilestone] = useState<string | null>(
+    null,
+  );
+  const [milestoneVisible, setMilestoneVisible] = useState(false);
   const scrollRef = useRef<HTMLDivElement>(null);
+  const atBirthEdgeRef = useRef(false);
+  const birthdayHideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+  const birthdayFadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+  const milestoneHideTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
+  const milestoneFadeTimerRef = useRef<ReturnType<typeof setTimeout> | null>(
+    null,
+  );
 
   const timeline = useMemo(() => {
     const bounds = getFullTimelineBounds();
@@ -139,6 +164,16 @@ export function EducationSection() {
       contentWidth,
       CANVAS_PADDING,
     );
+    const milestoneMarkers = TIMELINE_MILESTONES.map((milestone) => ({
+      ...milestone,
+      caption: milestoneCaption(milestone),
+      leftPx: getMarkerPosition(
+        parseYearFraction(milestone.date),
+        bounds,
+        contentWidth,
+        CANVAS_PADDING,
+      ),
+    })).filter((m) => m.leftPx !== null);
     const rowCount = getRowCount(layouts);
     const timelineHeight =
       HEADER_HEIGHT + rowCount * ROW_HEIGHT + TIMELINE_BOTTOM_PAD;
@@ -152,12 +187,90 @@ export function EducationSection() {
       markers,
       todayPx,
       birthPx,
+      milestoneMarkers,
       rowCount,
       timelineHeight,
       tableHeight,
       contentAreaHeight,
     };
   }, []);
+
+  const clearBirthdayTimers = () => {
+    if (birthdayHideTimerRef.current) {
+      clearTimeout(birthdayHideTimerRef.current);
+      birthdayHideTimerRef.current = null;
+    }
+    if (birthdayFadeTimerRef.current) {
+      clearTimeout(birthdayFadeTimerRef.current);
+      birthdayFadeTimerRef.current = null;
+    }
+  };
+
+  const hideBirthdayCaption = () => {
+    setBirthdayVisible(false);
+    birthdayFadeTimerRef.current = setTimeout(() => {
+      setBirthdayActive(false);
+      birthdayFadeTimerRef.current = null;
+    }, MILESTONE_FADE_MS);
+  };
+
+  const revealBirthdayCaption = () => {
+    clearBirthdayTimers();
+    setBirthdayActive(true);
+    requestAnimationFrame(() => setBirthdayVisible(true));
+
+    birthdayHideTimerRef.current = setTimeout(() => {
+      hideBirthdayCaption();
+      birthdayHideTimerRef.current = null;
+    }, BIRTHDAY_REVEAL_MS);
+  };
+
+  const clearMilestoneTimers = () => {
+    if (milestoneHideTimerRef.current) {
+      clearTimeout(milestoneHideTimerRef.current);
+      milestoneHideTimerRef.current = null;
+    }
+    if (milestoneFadeTimerRef.current) {
+      clearTimeout(milestoneFadeTimerRef.current);
+      milestoneFadeTimerRef.current = null;
+    }
+  };
+
+  const hideMilestoneCaption = () => {
+    setMilestoneVisible(false);
+    milestoneFadeTimerRef.current = setTimeout(() => {
+      setRevealedMilestone(null);
+      milestoneFadeTimerRef.current = null;
+    }, MILESTONE_FADE_MS);
+  };
+
+  const handleMilestoneClick = (label: string) => {
+    if (revealedMilestone === label) {
+      clearMilestoneTimers();
+      hideMilestoneCaption();
+      return;
+    }
+
+    clearMilestoneTimers();
+    setRevealedMilestone(label);
+    requestAnimationFrame(() => setMilestoneVisible(true));
+
+    milestoneHideTimerRef.current = setTimeout(() => {
+      hideMilestoneCaption();
+      milestoneHideTimerRef.current = null;
+    }, MILESTONE_REVEAL_MS);
+  };
+
+  const handleScroll = () => {
+    const el = scrollRef.current;
+    if (!el) return;
+
+    const atBirthEdge = el.scrollLeft <= 8;
+    if (atBirthEdge && !atBirthEdgeRef.current) {
+      revealBirthdayCaption();
+    }
+    atBirthEdgeRef.current = atBirthEdge;
+  };
 
   const applyDefaultScroll = (behavior: ScrollBehavior = "auto") => {
     const el = scrollRef.current;
@@ -176,7 +289,7 @@ export function EducationSection() {
       el.scrollTo({ left, behavior });
     }
 
-    setAtBirthLimit(left <= 8);
+    atBirthEdgeRef.current = el.scrollLeft <= 8;
     return true;
   };
 
@@ -196,11 +309,13 @@ export function EducationSection() {
     return () => cancelAnimationFrame(frame);
   }, [view, timeline.canvasWidth, timeline.bounds]);
 
-  const handleScroll = () => {
-    const el = scrollRef.current;
-    if (!el) return;
-    setAtBirthLimit(el.scrollLeft <= 8);
-  };
+  useEffect(
+    () => () => {
+      clearBirthdayTimers();
+      clearMilestoneTimers();
+    },
+    [],
+  );
 
   return (
     <FadeIn>
@@ -247,7 +362,7 @@ export function EducationSection() {
 
         <div
           className="mt-4 flex flex-col"
-          style={{ minHeight: timeline.contentAreaHeight + 28 }}
+          style={{ minHeight: timeline.contentAreaHeight }}
         >
           <div style={{ height: timeline.contentAreaHeight }}>
             {view === "gantt" ? (
@@ -299,18 +414,64 @@ export function EducationSection() {
                     />
                   ))}
 
-                  {/* Birth marker */}
+                  {/* Birth marker — auto-reveals caption at scroll edge */}
                   {timeline.birthPx !== null && (
                     <div
                       className="absolute top-0 bottom-0 z-10 w-0.5 bg-pink-400"
                       style={{ left: timeline.birthPx }}
-                      title="Jul 12, 2000"
                     >
-                      <div className="absolute -left-2 -top-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-pink-400 text-[10px]">
+                      <div className="absolute -left-3 -top-1 flex h-6 w-6 items-center justify-center rounded-full bg-pink-400 text-[10px]">
                         🎂
                       </div>
+                      {birthdayActive && (
+                        <div
+                          className={cn(
+                            "pointer-events-none absolute bottom-2 z-20 -translate-x-1/2 whitespace-nowrap rounded bg-card/95 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground shadow-sm ring-1 ring-border/60 transition-opacity duration-400",
+                            birthdayVisible ? "opacity-100" : "opacity-0",
+                          )}
+                          style={{ left: 0 }}
+                        >
+                          {BIRTHDAY_CAPTION}
+                        </div>
+                      )}
                     </div>
                   )}
+
+                  {/* Life milestones — click pin to reveal caption */}
+                  {timeline.milestoneMarkers.map((milestone) => (
+                    <div
+                      key={milestone.label}
+                      className={cn(
+                        "absolute top-0 bottom-0 z-10 w-0.5",
+                        milestone.lineClass,
+                      )}
+                      style={{ left: milestone.leftPx! }}
+                    >
+                      <button
+                        type="button"
+                        onClick={() => handleMilestoneClick(milestone.label)}
+                        data-cursor-hint="?"
+                        aria-label={`Reveal: ${milestone.label}`}
+                        className={cn(
+                          "absolute -left-3 -top-1 flex h-6 w-6 items-center justify-center rounded-full text-[10px] transition-transform hover:scale-110",
+                          milestone.badgeClass,
+                        )}
+                      >
+                        {milestone.icon}
+                      </button>
+                      {revealedMilestone === milestone.label && (
+                        <div
+                          className={cn(
+                            "pointer-events-none absolute bottom-2 z-20 -translate-x-1/2 whitespace-nowrap rounded bg-card/95 px-1.5 py-0.5 text-[10px] font-medium text-muted-foreground shadow-sm ring-1 ring-border/60 transition-opacity duration-400",
+                            milestoneVisible ? "opacity-100" : "opacity-0",
+                          )}
+                          style={{ left: 0 }}
+                        >
+                          {milestone.caption}
+                        </div>
+                      )}
+                    </div>
+                  ))}
 
                   {/* Today marker */}
                   {timeline.todayPx !== null && (
@@ -384,16 +545,6 @@ export function EducationSection() {
               </div>
             )}
           </div>
-
-          <p
-            className={cn(
-              "mt-2 h-7 text-center text-xs text-muted-foreground",
-              !(view === "gantt" && atBirthLimit) && "invisible",
-            )}
-          >
-            🎂 Jul 12, 2000 — as far back as the timeline goes. Happy birthday,
-            Sahil!
-          </p>
         </div>
 
         <Sheet
