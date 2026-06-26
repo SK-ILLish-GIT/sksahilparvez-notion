@@ -38,9 +38,11 @@ export interface ProjectItem {
   stack: string[];
   links: { github?: string; demo?: string | null };
   featured: boolean;
-  bentoSize: "large" | "small";
+  bentoSize: "large" | "wide" | "tall" | "small";
   coverGradient: string;
   highlights: string[];
+  metric?: { label: string; value: string };
+  architecture?: string;
 }
 
 export interface SkillGroup {

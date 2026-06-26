@@ -1,5 +1,37 @@
 [
   {
+    "id": "portfolio",
+    "name": "Notion Portfolio",
+    "tagline": "Notion-themed developer portfolio",
+    "period": "Jun 2026 – Present",
+    "pageIcon": "📓",
+    "stack": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "Tailwind CSS",
+      "shadcn/ui",
+      "Recharts",
+      "Framer Motion"
+    ],
+    "links": {
+      "github": "https://github.com/SK-ILLish-GIT/sksahilparvez-notion"
+    },
+    "featured": true,
+    "bentoSize": "wide",
+    "coverGradient": "from-neutral-600 to-neutral-900",
+    "metric": {
+      "label": "Scope",
+      "value": "8 sections · multi-view databases · live CP stats"
+    },
+    "highlights": [
+      "Built a Notion-inspired portfolio SPA with sidebar navigation, block-style sections, and detail sheets for experience, education, and projects.",
+      "Shipped multi-view sections — bento + table for projects, timeline + table for experience, kanban for certifications, and table/problems/topics for competitive programming.",
+      "Integrated live Codolio stats with snapshot fallback for CP ratings, problem breakdowns, and topic heatmaps via Recharts.",
+      "Authored content as JSON with TypeScript types, pre-commit hooks, and a Vite + Tailwind 4 + shadcn/ui component stack."
+    ]
+  },
+  {
     "id": "gamevault",
     "name": "GameVault",
     "tagline": "Distributed Gaming Platform",
@@ -16,16 +48,54 @@
       "OpenTelemetry"
     ],
     "links": {
-      "github": "https://github.com/SK-ILLish-GIT/games"
+      "github": "https://github.com/SK-ILLish-GIT/games_sk"
     },
     "featured": true,
-    "bentoSize": "large",
+    "bentoSize": "tall",
     "coverGradient": "from-slate-600 to-slate-800",
+    "metric": {
+      "label": "Scale",
+      "value": "10 services · 3 databases · full observability stack"
+    },
+    "architecture": "┌─────────┐    ┌─────────┐    ┌──────────────────┐\n│ React   │───▶│  Nginx  │───▶│ Express services │\n│   SPA   │    │ Gateway │    │ auth · games · lb│\n└─────────┘    └─────────┘    └────────┬─────────┘\n                                       │\n                    ┌──────────────────┼──────────────────┐\n                    ▼                  ▼                  ▼\n              PostgreSQL            Redis             MongoDB",
     "highlights": [
       "Built a containerized gaming platform with a 10-service Docker Compose core stack and an 8-container observability overlay.",
       "Exposed the system through a React SPA and an Nginx API gateway routing to 5 independent Express backend services.",
       "Integrated 3 data stores: PostgreSQL (users/auth via Prisma), Redis (token rotation & leaderboard cache), MongoDB (game state).",
       "Instrumented services with OpenTelemetry, Prometheus, Loki, Tempo, and 6 Grafana dashboards for full metrics/logs/traces correlation."
+    ]
+  },
+  {
+    "id": "coldmail",
+    "name": "coldMail",
+    "tagline": "AI-powered cold-mail workbench",
+    "period": "May 2026 – Present",
+    "pageIcon": "✉️",
+    "stack": [
+      "React",
+      "Vite",
+      "Tailwind CSS",
+      "Express",
+      "MongoDB",
+      "Google Gemini",
+      "Gmail IMAP"
+    ],
+    "links": {
+      "github": "https://github.com/SK-ILLish-GIT/coldMail",
+      "demo": "https://coldmail-e9x0.onrender.com/"
+    },
+    "featured": true,
+    "bentoSize": "wide",
+    "coverGradient": "from-rose-500 to-sky-600",
+    "metric": {
+      "label": "Scope",
+      "value": "3 compose modes · Gemini AI · Gmail draft pipeline"
+    },
+    "highlights": [
+      "Built a personal cold-mail workbench with MailID, CSV, and LinkedIn compose modes plus Gemini-powered name extraction, email patterns, and JD matching.",
+      "Managed template and PDF resume libraries in MongoDB with tag filters and merge tokens for personalised HTML drafts.",
+      "Saved every send to Gmail Drafts via IMAP APPEND — a Render free-tier-friendly path that skips blocked outbound SMTP.",
+      "Shipped as a React + Express monorepo with light/dark theme, rate-limited AI endpoints, and one-click Render deployment."
     ]
   },
   {
@@ -39,12 +109,70 @@
       "github": "https://github.com/SK-ILLish-GIT/PriceTrackEr"
     },
     "featured": true,
-    "bentoSize": "small",
+    "bentoSize": "wide",
     "coverGradient": "from-amber-500 to-orange-600",
     "highlights": [
       "Developed a price tracking website with automated price-drop alert functionality.",
       "Integrated cron jobs for scheduled (7am daily) data scraping from Amazon, providing users with morning alerts.",
       "Implemented AI-generated product descriptions (under 200 words each) for clarity and consistency."
+    ]
+  },
+  {
+    "id": "file-organizer",
+    "name": "File Organizer",
+    "tagline": "Auto-sort downloads by file type",
+    "period": "Jun 2025",
+    "pageIcon": "📂",
+    "stack": ["Bash", "Python", "Shell Scripting"],
+    "links": {
+      "github": "https://github.com/SK-ILLish-GIT/file-organizer"
+    },
+    "featured": false,
+    "bentoSize": "tall",
+    "coverGradient": "from-emerald-500 to-teal-600",
+    "highlights": [
+      "Built a Bash script that sorts files into images, videos, docs, archives, and music folders by extension.",
+      "Added smart subfolders for screenshots and PDFs, with duplicate-name skipping to avoid overwrites.",
+      "Wrapped the CLI in a Python helper that installs the script, prompts for categories, and prints a move summary."
+    ]
+  },
+  {
+    "id": "gametheory",
+    "name": "Sports Centre Booking",
+    "tagline": "Court slot booking system",
+    "period": "Oct 2024",
+    "pageIcon": "🏟️",
+    "stack": ["React", "Chakra UI", "Node.js", "Express", "Context API"],
+    "links": {
+      "github": "https://github.com/SK-ILLish-GIT/GameTheory",
+      "demo": "https://game-theory-iota.vercel.app"
+    },
+    "featured": false,
+    "bentoSize": "wide",
+    "coverGradient": "from-blue-500 to-indigo-600",
+    "highlights": [
+      "Built a web app for browsing sports centres and booking court slots by centre, sport, court, and time.",
+      "Fetched real-time slot availability from an Express API as users changed court and date selections.",
+      "Implemented user authentication with React Context and a responsive Chakra UI booking grid."
+    ]
+  },
+  {
+    "id": "mini-project",
+    "name": "Image → LaTeX",
+    "tagline": "Upload images, generate equations",
+    "period": "Sep 2023 – Nov 2023",
+    "pageIcon": "📐",
+    "stack": ["Node.js", "Express", "Multer", "Python", "EJS"],
+    "links": {
+      "github": "https://github.com/SK-ILLish-GIT/mini-project"
+    },
+    "featured": false,
+    "bentoSize": "wide",
+    "coverGradient": "from-violet-500 to-purple-600",
+    "highlights": [
+      "Built a 5th-semester web app for uploading an image, previewing it, and generating a LaTeX equation.",
+      "Handled file uploads with Multer on an Express server and served the UI with EJS views.",
+      "Added a Python API layer for equation generation alongside client-side preview logic."
     ]
   }
 ]
