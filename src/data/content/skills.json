@@ -2,49 +2,81 @@
   {
     "id": "frontend-backend",
     "label": "Frontend & Backend",
+    "icon": "⚡",
+    "coverGradient": "from-blue-500 to-indigo-600",
     "items": [
-      "React.js",
-      "Next.js",
-      "TypeScript",
-      "Node.js",
-      "Express.js",
-      "Java Spring Boot",
-      "REST APIs"
+      { "name": "React.js", "logo": "/logos/skills/react.svg" },
+      { "name": "Next.js", "logo": "/logos/skills/nextdotjs.svg" },
+      { "name": "TypeScript", "logo": "/logos/skills/typescript.svg" },
+      { "name": "Node.js", "logo": "/logos/skills/nodedotjs.svg" },
+      { "name": "Express.js", "logo": "/logos/skills/express.svg" },
+      { "name": "Java Spring Boot", "logo": "/logos/skills/springboot.svg" },
+      { "name": "REST APIs", "logo": "/logos/skills/openapi.svg" }
     ]
   },
   {
     "id": "databases",
     "label": "Databases",
-    "items": ["PostgreSQL", "MongoDB", "MySQL", "Redis", "Prisma"]
+    "icon": "🗄️",
+    "coverGradient": "from-emerald-500 to-teal-600",
+    "items": [
+      { "name": "PostgreSQL", "logo": "/logos/skills/postgresql.svg" },
+      { "name": "MongoDB", "logo": "/logos/skills/mongodb.svg" },
+      { "name": "MySQL", "logo": "/logos/skills/mysql.svg" },
+      { "name": "Redis", "logo": "/logos/skills/redis.svg" },
+      { "name": "Prisma", "logo": "/logos/skills/prisma.svg" }
+    ]
   },
   {
     "id": "devops",
     "label": "DevOps & Observability",
+    "icon": "🛠️",
+    "coverGradient": "from-slate-500 to-slate-800",
     "items": [
-      "Docker",
-      "CI/CD",
-      "OpenTelemetry",
-      "Prometheus",
-      "Grafana",
-      "Loki",
-      "Tempo"
+      { "name": "Docker", "logo": "/logos/skills/docker.svg" },
+      { "name": "CI/CD", "logo": "/logos/skills/cicd.svg" },
+      { "name": "OpenTelemetry", "logo": "/logos/skills/opentelemetry.svg" },
+      { "name": "Prometheus", "logo": "/logos/skills/prometheus.svg" },
+      { "name": "Grafana", "logo": "/logos/skills/grafana.svg" },
+      { "name": "Loki", "logo": "/logos/skills/loki.svg" },
+      { "name": "Tempo", "logo": "/logos/skills/tempo.svg" }
     ]
   },
   {
     "id": "languages",
     "label": "Languages",
-    "items": ["C++", "Java", "Python", "JavaScript", "TypeScript", "Bash"]
+    "icon": "💻",
+    "coverGradient": "from-violet-500 to-purple-600",
+    "items": [
+      { "name": "C++", "logo": "/logos/skills/cplusplus.svg" },
+      { "name": "Java", "logo": "/logos/skills/java.svg" },
+      { "name": "Python", "logo": "/logos/skills/python.svg" },
+      { "name": "JavaScript", "logo": "/logos/skills/javascript.svg" },
+      { "name": "TypeScript", "logo": "/logos/skills/typescript.svg" },
+      { "name": "Bash", "logo": "/logos/skills/bash.svg" }
+    ]
   },
   {
     "id": "concepts",
     "label": "Concepts",
+    "icon": "🧠",
+    "coverGradient": "from-amber-500 to-orange-600",
     "items": [
-      "Data Structures",
-      "OOP",
-      "Operating Systems",
-      "DBMS",
-      "System Design",
-      "Distributed Systems"
+      {
+        "name": "Data Structures",
+        "logo": "/logos/skills/data-structures.svg"
+      },
+      { "name": "OOP", "logo": "/logos/skills/oop.svg" },
+      {
+        "name": "Operating Systems",
+        "logo": "/logos/skills/linux.svg"
+      },
+      { "name": "DBMS", "logo": "/logos/skills/sqlite.svg" },
+      { "name": "System Design", "logo": "/logos/skills/nginx.svg" },
+      {
+        "name": "Distributed Systems",
+        "logo": "/logos/skills/kubernetes.svg"
+      }
     ]
   }
 ]

@@ -1,11 +1,50 @@
 import { portfolio } from "@/data";
-import { Badge } from "@/components/ui/badge";
+import type { SkillGroup, SkillItem } from "@/types/portfolio";
 import {
   NotionBlock,
   NotionHeading,
   NotionSubheading,
 } from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
+
+function SkillTile({ skill }: { skill: SkillItem }) {
+  return (
+    <div
+      data-cursor-hint={skill.name}
+      className="inline-flex max-w-full items-center gap-1.5 rounded-md border border-border/60 bg-muted/20 px-2 py-1 text-[11px] leading-tight transition-colors hover:bg-notion-hover"
+    >
+      <img
+        src={skill.logo}
+        alt=""
+        loading="lazy"
+        className="h-3.5 w-3.5 shrink-0 object-contain dark:invert dark:brightness-200"
+      />
+      <span className="truncate">{skill.name}</span>
+    </div>
+  );
+}
+
+function SkillGalleryGroup({ group }: { group: SkillGroup }) {
+  return (
+    <div>
+      <div className="mb-2 flex items-baseline gap-1.5">
+        <NotionSubheading className="mb-0 text-xs">
+          {group.label}
+        </NotionSubheading>
+        <span className="text-[10px] tabular-nums text-muted-foreground">
+          {group.items.length}
+        </span>
+      </div>
+      <ul className="flex flex-wrap gap-1.5">
+        {group.items.map((skill) => (
+          <li key={skill.name}>
+            <SkillTile skill={skill} />
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
 
 export function SkillsSection() {
   return (
@@ -14,47 +53,14 @@ export function SkillsSection() {
         <NotionBlock>
           <NotionHeading>Skills</NotionHeading>
           <p className="mt-1 text-xs text-muted-foreground">
-            Database · Board view
+            Database · Gallery view
           </p>
         </NotionBlock>
 
-        <div className="mt-4 flex gap-3 overflow-x-auto pb-2">
+        <div className="mt-4 space-y-4 rounded-lg border border-border bg-card/40 px-3 py-3 sm:px-4">
           {portfolio.skills.map((group) => (
-            <div
-              key={group.id}
-              className="w-52 shrink-0 rounded-lg border border-border bg-card"
-            >
-              <div className="px-3 py-2">
-                <NotionSubheading className="mb-0">
-                  {group.label}
-                </NotionSubheading>
-                <p className="text-[10px] text-muted-foreground">
-                  {group.items.length} items
-                </p>
-              </div>
-              <div className="space-y-1.5 p-2">
-                {group.items.map((skill) => (
-                  <div
-                    key={skill}
-                    data-cursor-hint="Skill tag"
-                    className="rounded-md border border-border bg-background px-2.5 py-2 text-sm shadow-sm transition-transform hover:-translate-y-0.5 hover:bg-notion-hover"
-                  >
-                    {skill}
-                  </div>
-                ))}
-              </div>
-            </div>
+            <SkillGalleryGroup key={group.id} group={group} />
           ))}
-        </div>
-
-        <div className="mt-4 flex flex-wrap gap-1.5 md:hidden">
-          {portfolio.skills.flatMap((g) =>
-            g.items.map((s) => (
-              <Badge key={s} variant="tag">
-                {s}
-              </Badge>
-            )),
-          )}
         </div>
       </section>
     </FadeIn>

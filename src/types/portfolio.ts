@@ -45,10 +45,17 @@ export interface ProjectItem {
   architecture?: string;
 }
 
+export interface SkillItem {
+  name: string;
+  logo: string;
+}
+
 export interface SkillGroup {
   id: string;
   label: string;
-  items: string[];
+  icon: string;
+  coverGradient: string;
+  items: SkillItem[];
 }
 
 export type EducationStatus = "completed" | "in-progress";
