@@ -17,6 +17,10 @@ export const config = {
     .map((origin) => origin.trim())
     .filter(Boolean),
   adminApiKey: process.env.ADMIN_API_KEY?.trim() ?? "",
+  adminPassword: process.env.ADMIN_PASSWORD?.trim() ?? "",
+  get sessionSecret(): string {
+    return this.adminApiKey || this.adminPassword;
+  },
   liveVisitorWindowMs: 2 * 60 * 1000,
 };
 

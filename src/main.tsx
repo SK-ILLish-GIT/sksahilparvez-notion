@@ -28,7 +28,12 @@ import { ContactSection } from "@/components/sections/ContactSection";
 import { PageFooter } from "@/components/sections/PageFooter";
 import { PAGE_PB, PAGE_X, SECTION_STACK } from "@/lib/layout";
 import { cn } from "@/lib/utils";
+import { AdminPage } from "@/pages/AdminPage";
 import "@/index.css";
+
+const isAdminRoute =
+  window.location.pathname === "/admin" ||
+  window.location.pathname === "/admin/";
 
 function AppShell() {
   const activeSection = useActiveSection();
@@ -94,8 +99,14 @@ function App() {
 
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
-    <PortfolioProvider>
-      <App />
-    </PortfolioProvider>
+    {isAdminRoute ? (
+      <ThemeProvider>
+        <AdminPage />
+      </ThemeProvider>
+    ) : (
+      <PortfolioProvider>
+        <App />
+      </PortfolioProvider>
+    )}
   </StrictMode>,
 );

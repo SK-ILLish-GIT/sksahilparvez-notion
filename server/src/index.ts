@@ -1,10 +1,12 @@
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import express from "express";
 import fs from "node:fs";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
 import { config } from "./config.js";
 import { connectDb } from "./db.js";
+import { adminRouter } from "./routes/admin.js";
 import { contentRouter } from "./routes/content.js";
 import { visitsRouter } from "./routes/visits.js";
 
@@ -32,8 +34,10 @@ app.use(
   cors({
     origin: config.corsOrigins,
     methods: ["GET", "POST", "PUT", "OPTIONS"],
+    credentials: true,
   }),
 );
+app.use(cookieParser());
 app.use(express.json({ limit: "2mb" }));
 
 app.get("/api/health", (_req, res) => {
@@ -41,6 +45,7 @@ app.get("/api/health", (_req, res) => {
 });
 
 app.use("/api/visits", visitsRouter);
+app.use("/api/admin", adminRouter);
 app.use("/api/content", contentRouter);
 
 const distPath = resolveDistPath();

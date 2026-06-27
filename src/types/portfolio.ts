@@ -213,7 +213,6 @@ export interface SiteConfig {
   linkedin: string;
   twitter: string;
   whatsapp: string;
-  portfolio3d: string;
   workspaceName: string;
   lastUpdated: string;
   coverGradient: string;

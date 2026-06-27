@@ -1,5 +1,6 @@
 import { Router } from "express";
-import { CONTENT_KEYS, config, type ContentKey } from "../config.js";
+import { CONTENT_KEYS, type ContentKey } from "../config.js";
+import { isAdminAuthenticated, isAdminEnabled } from "../lib/admin-auth.js";
 import { SectionContent } from "../models/index.js";
 
 export const contentRouter = Router();
@@ -66,14 +67,12 @@ contentRouter.get("/:key", async (req, res) => {
 
 contentRouter.put("/:key", async (req, res) => {
   try {
-    if (!config.adminApiKey) {
+    if (!isAdminEnabled()) {
       res.status(503).json({ error: "Content updates are disabled" });
       return;
     }
 
-    const auth = req.header("authorization");
-    const token = auth?.startsWith("Bearer ") ? auth.slice(7) : "";
-    if (token !== config.adminApiKey) {
+    if (!isAdminAuthenticated(req)) {
       res.status(401).json({ error: "Unauthorized" });
       return;
     }
