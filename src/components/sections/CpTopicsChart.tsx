@@ -24,7 +24,6 @@ import { ChevronDown, Table2 } from "lucide-react";
 
 interface CpTopicsChartProps {
   sections: CpTopicPlatformSection[];
-  loading?: boolean;
   dataSource?: CpDataSource;
   className?: string;
 }
@@ -231,7 +230,6 @@ function TopicHeatmap({
 
 export function CpTopicsChart({
   sections,
-  loading,
   dataSource = "static",
   className,
 }: CpTopicsChartProps) {
@@ -271,14 +269,13 @@ export function CpTopicsChart({
     <>
       <div
         className={cn(
-          "flex flex-col overflow-hidden rounded-md border border-border bg-card transition-opacity dark:bg-accent/10",
+          "flex flex-col overflow-hidden rounded-md border border-border bg-card dark:bg-accent/10",
           SURFACE_ELEVATED,
-          loading && "opacity-60",
           className,
         )}
       >
         <div className="flex flex-wrap items-center justify-between gap-2 border-b border-border px-4 py-2">
-          <CpDataSourceIndicator source={dataSource} loading={loading} />
+          <CpDataSourceIndicator source={dataSource} />
           <div className="flex items-center gap-2">
             <button
               type="button"

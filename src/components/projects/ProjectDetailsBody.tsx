@@ -12,14 +12,16 @@ import { BrandLogo } from "@/components/ui/BrandLogo";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
 import { cn } from "@/lib/utils";
 
+import { Skeleton } from "@/components/ui/skeleton";
+
 function DetailsSkeleton() {
   return (
     <div className="space-y-3" aria-hidden>
-      <div className="h-4 w-2/3 animate-pulse rounded bg-muted" />
-      <div className="h-3 w-full animate-pulse rounded bg-muted" />
-      <div className="h-3 w-full animate-pulse rounded bg-muted" />
-      <div className="h-3 w-5/6 animate-pulse rounded bg-muted" />
-      <div className="h-3 w-4/6 animate-pulse rounded bg-muted" />
+      <Skeleton className="h-4 w-2/3" />
+      <Skeleton className="h-3 w-full" />
+      <Skeleton className="h-3 w-full" />
+      <Skeleton className="h-3 w-5/6" />
+      <Skeleton className="h-3 w-4/6" />
     </div>
   );
 }

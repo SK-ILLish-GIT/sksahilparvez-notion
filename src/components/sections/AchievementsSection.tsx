@@ -6,6 +6,11 @@ import {
   SectionMeta,
 } from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
+import {
+  CpProblemsSkeleton,
+  CpTableSkeleton,
+  CpTopicsSkeleton,
+} from "@/components/sections/CpViewSkeletons";
 import { CpProblemsChart } from "@/components/sections/CpProblemsChart";
 import { CpTopicsChart } from "@/components/sections/CpTopicsChart";
 import { Badge } from "@/components/ui/badge";
@@ -39,13 +44,7 @@ function PlatformLogo({ logo, platform }: { logo?: string; platform: string }) {
   );
 }
 
-function TableView({
-  rows,
-  loading,
-}: {
-  rows: CpTableRow[];
-  loading: boolean;
-}) {
+function TableView({ rows }: { rows: CpTableRow[] }) {
   return (
     <div
       className={cn(
@@ -80,14 +79,7 @@ function TableView({
                   <span>{row.platform}</span>
                 </div>
               </td>
-              <td
-                className={cn(
-                  "px-4 align-middle",
-                  loading && row.isLive && "text-muted-foreground",
-                )}
-              >
-                {row.rating}
-              </td>
+              <td className="px-4 align-middle">{row.rating}</td>
               <td className="px-4 align-middle">
                 <a
                   href={row.displayHref}
@@ -102,12 +94,7 @@ function TableView({
                   <ExternalLink className="h-3 w-3 opacity-60 transition-opacity group-hover:opacity-100" />
                 </a>
               </td>
-              <td
-                className={cn(
-                  "px-4 align-middle",
-                  loading && row.isLive && "opacity-70",
-                )}
-              >
+              <td className="px-4 align-middle">
                 {row.bestRanks.length > 0 ? (
                   <div className="flex flex-wrap content-center gap-1">
                     {row.bestRanks.map((rank) => (
@@ -169,25 +156,31 @@ export function AchievementsSection() {
           style={{ height: CP_VIEW_HEIGHT }}
         >
           <div className="h-full min-h-0">
-            {view === "table" && (
-              <TableView rows={data.tableRows} loading={loading} />
-            )}
-            {view === "problems" && (
-              <CpProblemsChart
-                slices={data.problemBreakdown}
-                totalProblems={data.totalProblems}
-                loading={loading}
-                dataSource={source}
-                className="h-full"
-              />
-            )}
-            {view === "topics" && (
-              <CpTopicsChart
-                sections={data.topicBreakdownByPlatform}
-                loading={loading}
-                dataSource={source}
-                className="h-full"
-              />
+            {loading ? (
+              <>
+                {view === "table" && <CpTableSkeleton />}
+                {view === "problems" && <CpProblemsSkeleton />}
+                {view === "topics" && <CpTopicsSkeleton />}
+              </>
+            ) : (
+              <>
+                {view === "table" && <TableView rows={data.tableRows} />}
+                {view === "problems" && (
+                  <CpProblemsChart
+                    slices={data.problemBreakdown}
+                    totalProblems={data.totalProblems}
+                    dataSource={source}
+                    className="h-full"
+                  />
+                )}
+                {view === "topics" && (
+                  <CpTopicsChart
+                    sections={data.topicBreakdownByPlatform}
+                    dataSource={source}
+                    className="h-full"
+                  />
+                )}
+              </>
             )}
           </div>
         </div>

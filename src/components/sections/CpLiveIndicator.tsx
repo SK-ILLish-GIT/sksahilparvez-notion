@@ -13,7 +13,20 @@ export function CpDataSourceIndicator({
   loading,
   className,
 }: CpDataSourceIndicatorProps) {
-  if (loading) return null;
+  if (loading) {
+    return (
+      <span
+        className={cn(
+          "inline-flex items-center gap-1.5 text-[10px] font-medium uppercase tracking-wide text-muted-foreground",
+          className,
+        )}
+        aria-label="Loading stats"
+      >
+        <span className="h-1.5 w-1.5 shrink-0 animate-pulse rounded-full bg-muted-foreground/70" />
+        Loading
+      </span>
+    );
+  }
 
   if (source === "live") {
     return (

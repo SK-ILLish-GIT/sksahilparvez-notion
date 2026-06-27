@@ -9,7 +9,6 @@ import { cn } from "@/lib/utils";
 interface CpProblemsChartProps {
   slices: CpProblemSlice[];
   totalProblems: number;
-  loading?: boolean;
   dataSource?: CpDataSource;
   className?: string;
 }
@@ -65,7 +64,6 @@ function CustomTooltip({
 export function CpProblemsChart({
   slices,
   totalProblems,
-  loading,
   dataSource = "static",
   className,
 }: CpProblemsChartProps) {
@@ -85,9 +83,8 @@ export function CpProblemsChart({
   return (
     <div
       className={cn(
-        "relative min-h-0 overflow-y-auto rounded-md border border-border bg-card transition-opacity dark:bg-accent/10",
+        "relative min-h-0 overflow-y-auto rounded-md border border-border bg-card dark:bg-accent/10",
         SURFACE_ELEVATED,
-        loading && "opacity-60",
         className,
       )}
     >
@@ -95,7 +92,6 @@ export function CpProblemsChart({
         <div className="relative flex shrink-0 items-center justify-center px-2 pt-3 pb-2 sm:w-[65%] sm:flex-1 sm:flex-none sm:pt-2">
           <CpDataSourceIndicator
             source={dataSource}
-            loading={loading}
             className="absolute top-2 left-3 z-10"
           />
           <div className="relative mx-auto aspect-square h-[220px] w-[220px] sm:h-[268px] sm:w-[268px]">

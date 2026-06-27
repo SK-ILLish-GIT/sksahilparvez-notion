@@ -38,7 +38,57 @@
   </head>
   <body>
     <!-- If you're reading this, you're our kind of engineer -->
-    <div id="root"></div>
+    <div id="root">
+      <div
+        id="initial-loader"
+        style="
+          position: fixed;
+          inset: 0;
+          z-index: 200;
+          display: flex;
+          flex-direction: column;
+          background: #191919;
+        "
+      >
+        <div
+          style="
+            height: 2px;
+            overflow: hidden;
+            background: rgba(255, 255, 255, 0.08);
+          "
+        >
+          <div
+            id="initial-loader-bar"
+            style="
+              height: 100%;
+              width: 0%;
+              background: rgba(16, 185, 129, 0.9);
+              transition: width 200ms ease-out;
+            "
+          ></div>
+        </div>
+      </div>
+      <style>
+        html:not(.dark) #initial-loader {
+          background: #f6f1e6;
+        }
+        html:not(.dark) #initial-loader div:first-child {
+          background: rgba(61, 57, 47, 0.12);
+        }
+      </style>
+      <script>
+        (function () {
+          var bar = document.getElementById("initial-loader-bar");
+          if (!bar) return;
+          var p = 0;
+          var id = setInterval(function () {
+            p = Math.min(88, p + Math.random() * 12);
+            bar.style.width = p + "%";
+            if (p >= 88) clearInterval(id);
+          }, 180);
+        })();
+      </script>
+    </div>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>
