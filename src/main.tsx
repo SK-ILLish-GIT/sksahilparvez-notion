@@ -2,6 +2,8 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { ThemeProvider } from "@/components/theme-provider";
 import { CursorGuideProvider } from "@/components/cursor/CursorGuide";
+import { EasterEggsInit } from "@/components/easter-eggs/EasterEggsInit";
+import { TimeOnSitePulseProvider } from "@/hooks/useTimeOnSitePulse";
 import {
   MobileNavBar,
   NotionSidebar,
@@ -30,39 +32,42 @@ function App() {
 
   return (
     <ThemeProvider>
-      <CursorGuideProvider>
-        <CalInit />
-        <div className="min-h-screen md:pl-60">
-          <NotionSidebar activeSection={activeSection} />
+      <TimeOnSitePulseProvider>
+        <CursorGuideProvider>
+          <EasterEggsInit />
+          <CalInit />
+          <div className="min-h-screen md:pl-60">
+            <NotionSidebar activeSection={activeSection} />
 
-          <main className="min-h-screen w-full min-w-0">
-            <MobileNavBar activeSection={activeSection} />
-            <PageHeader />
-            <div
-              className={cn(
-                "mx-auto max-w-[900px]",
-                SECTION_STACK,
-                PAGE_X,
-                PAGE_PB,
-              )}
-            >
-              <NotionDivider />
-              <AboutSection />
-              <EducationSection />
-              <ExperienceSection />
-              <ProjectsSection />
-              <SkillsSection />
-              <CertificationsSection />
-              <AchievementsSection />
-              <VolunteerSection />
-              <ContactSection />
-              <PageFooter />
-            </div>
-          </main>
-        </div>
+            <main className="min-h-screen w-full min-w-0">
+              <MobileNavBar activeSection={activeSection} />
+              <PageHeader />
+              <div
+                className={cn(
+                  "mx-auto max-w-[900px]",
+                  SECTION_STACK,
+                  PAGE_X,
+                  PAGE_PB,
+                )}
+              >
+                <NotionDivider />
+                <AboutSection />
+                <EducationSection />
+                <ExperienceSection />
+                <ProjectsSection />
+                <SkillsSection />
+                <CertificationsSection />
+                <AchievementsSection />
+                <VolunteerSection />
+                <ContactSection />
+                <PageFooter />
+              </div>
+            </main>
+          </div>
 
-        <SlashCommand />
-      </CursorGuideProvider>
+          <SlashCommand />
+        </CursorGuideProvider>
+      </TimeOnSitePulseProvider>
     </ThemeProvider>
   );
 }

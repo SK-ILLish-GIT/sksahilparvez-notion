@@ -1,7 +1,11 @@
 import { portfolio } from "@/data";
 import { CalBookingButton } from "@/components/booking/CalBookingButton";
 import { BookmarkBlock } from "@/components/notion/BookmarkBlock";
-import { NotionBlock, NotionHeading } from "@/components/notion/NotionBlock";
+import {
+  NotionBlock,
+  NotionHeading,
+  SectionMeta,
+} from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
 import { CONTACT_GRID, SECTION_SCROLL_MT } from "@/lib/layout";
 import { cn } from "@/lib/utils";
@@ -12,7 +16,7 @@ export function ContactSection() {
       <section id="contact" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <NotionHeading>Contact</NotionHeading>
-          <p className="mt-1 text-xs text-muted-foreground">Bookmarks</p>
+          <SectionMeta label="Bookmarks" />
         </NotionBlock>
 
         <div className={cn("mt-4", CONTACT_GRID)}>

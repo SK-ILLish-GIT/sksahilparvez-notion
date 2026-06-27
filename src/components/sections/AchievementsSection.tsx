@@ -1,6 +1,10 @@
 import { useState } from "react";
 import type { CpTableRow } from "@/types/portfolio";
-import { NotionBlock, NotionHeading } from "@/components/notion/NotionBlock";
+import {
+  NotionBlock,
+  NotionHeading,
+  SectionMeta,
+} from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
 import { CpProblemsChart } from "@/components/sections/CpProblemsChart";
 import { CpTopicsChart } from "@/components/sections/CpTopicsChart";
@@ -157,9 +161,7 @@ export function AchievementsSection() {
               ))}
             </div>
           </div>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Database · {VIEW_LABELS[view]} view
-          </p>
+          <SectionMeta label={VIEW_LABELS[view]} />
         </NotionBlock>
 
         <div

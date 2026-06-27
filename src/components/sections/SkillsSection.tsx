@@ -4,6 +4,7 @@ import {
   NotionBlock,
   NotionHeading,
   NotionSubheading,
+  SectionMeta,
 } from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
 import {
@@ -58,9 +59,7 @@ export function SkillsSection() {
       <section id="skills" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <NotionHeading>Skills</NotionHeading>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Database · Gallery view
-          </p>
+          <SectionMeta label="Gallery" />
         </NotionBlock>
 
         <div

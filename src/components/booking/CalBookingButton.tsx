@@ -1,5 +1,6 @@
 import { portfolio } from "@/data";
 import type { CalMeetingLink } from "@/types/portfolio";
+import { useTimeOnSitePulse } from "@/hooks/useTimeOnSitePulse";
 import { CAL_MODAL_CONFIG_JSON } from "@/lib/cal";
 import { cn } from "@/lib/utils";
 import { Calendar } from "lucide-react";
@@ -30,7 +31,10 @@ export function CalBookingButton({
   className,
 }: CalBookingButtonProps) {
   const meeting = getDefaultMeeting();
+  const shouldPulse = useTimeOnSitePulse();
   if (!meeting) return null;
+
+  const pulseClass = shouldPulse ? "animate-cal-easter-pulse" : "";
 
   const calProps = {
     type: "button" as const,
@@ -48,6 +52,7 @@ export function CalBookingButton({
           "group flex w-full items-center gap-3 rounded-md border p-3 text-left shadow-sm",
           calBookingSurfaceClass,
           calBookingHoverClass,
+          pulseClass,
           className,
         )}
       >
@@ -78,6 +83,7 @@ export function CalBookingButton({
         "inline-flex items-center gap-2 rounded-md border text-sm font-semibold shadow-sm",
         calBookingSurfaceClass,
         calBookingHoverClass,
+        pulseClass,
         "text-black dark:text-white",
         layout === "full" ? "h-9 w-full justify-start px-3" : "h-9 px-4",
         className,

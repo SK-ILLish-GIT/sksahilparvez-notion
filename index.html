@@ -30,8 +30,14 @@
       href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
+    <script>
+      if (localStorage.getItem("theme") !== "light") {
+        document.documentElement.classList.add("dark");
+      }
+    </script>
   </head>
   <body>
+    <!-- If you're reading this, you're our kind of engineer -->
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
   </body>

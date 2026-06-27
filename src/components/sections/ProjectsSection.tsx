@@ -3,7 +3,11 @@ import { portfolio } from "@/data";
 import type { ProjectItem } from "@/types/portfolio";
 import { Badge } from "@/components/ui/badge";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
-import { NotionBlock, NotionHeading } from "@/components/notion/NotionBlock";
+import {
+  NotionBlock,
+  NotionHeading,
+  SectionMeta,
+} from "@/components/notion/NotionBlock";
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
@@ -521,7 +525,7 @@ export function ProjectsSection() {
       <section id="projects" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <NotionHeading>Projects</NotionHeading>
-          <p className="mt-1 text-xs text-muted-foreground">Database</p>
+          <SectionMeta label="Bento" />
         </NotionBlock>
 
         <div className={cn("mt-4", PROJECTS_BENTO_GRID)}>

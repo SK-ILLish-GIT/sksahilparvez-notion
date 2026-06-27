@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { portfolio } from "@/data";
+import { getDisplayStatus } from "@/lib/easter-eggs/status";
 import { CalBookingButton } from "@/components/booking/CalBookingButton";
 import { SocialLinkButton } from "@/components/ui/BrandLogo";
 import { scrollToSection } from "@/lib/utils";
@@ -74,7 +75,7 @@ function SidebarWorkspaceHeader({ onNavigate }: { onNavigate?: () => void }) {
           {statusProp && (
             <span className="mt-1.5 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-700 dark:text-emerald-400">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
-              {statusProp.value}
+              {getDisplayStatus(statusProp.value)}
             </span>
           )}
         </div>

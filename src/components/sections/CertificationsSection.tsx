@@ -7,6 +7,7 @@ import {
   NotionBlock,
   NotionHeading,
   NotionSubheading,
+  SectionMeta,
 } from "@/components/notion/NotionBlock";
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
@@ -238,9 +239,7 @@ export function CertificationsSection() {
       <section id="certifications" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <NotionHeading>Certifications</NotionHeading>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Database · Board view
-          </p>
+          <SectionMeta label="Board" />
         </NotionBlock>
 
         <div

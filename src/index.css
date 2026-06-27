@@ -146,4 +146,24 @@
   .surface-elevated {
     box-shadow: var(--surface-elevated-shadow);
   }
+
+  @keyframes cal-easter-pulse {
+    0%,
+    100% {
+      box-shadow: 0 0 0 0 rgba(16, 185, 129, 0);
+    }
+    50% {
+      box-shadow: 0 0 0 4px rgba(16, 185, 129, 0.35);
+    }
+  }
+
+  .animate-cal-easter-pulse {
+    animation: cal-easter-pulse 2.5s ease-in-out infinite;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-cal-easter-pulse {
+      animation: none;
+    }
+  }
 }

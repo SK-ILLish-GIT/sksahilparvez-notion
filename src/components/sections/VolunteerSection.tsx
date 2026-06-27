@@ -6,6 +6,7 @@ import {
   NotionBlock,
   NotionHeading,
   NotionSubheading,
+  SectionMeta,
 } from "@/components/notion/NotionBlock";
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
@@ -103,6 +104,7 @@ export function VolunteerSection() {
       <section id="volunteer" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <NotionHeading>Volunteer</NotionHeading>
+          <SectionMeta label="List" />
         </NotionBlock>
 
         <div className="mt-2 space-y-0.5">

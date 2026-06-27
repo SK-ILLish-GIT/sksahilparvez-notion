@@ -1,5 +1,6 @@
 import { portfolio } from "@/data";
 import { CalBookingButton } from "@/components/booking/CalBookingButton";
+import { getDisplayStatus } from "@/lib/easter-eggs/status";
 import { ContactSocialDialog } from "@/components/contact/ContactSocialDialog";
 import { PropertyPill } from "@/components/notion/PropertyPill";
 import {
@@ -59,7 +60,11 @@ export function PageHeader() {
               <PropertyPill
                 key={prop.label}
                 label={prop.label}
-                value={prop.value}
+                value={
+                  prop.type === "status"
+                    ? getDisplayStatus(prop.value)
+                    : prop.value
+                }
                 type={prop.type}
               />
             ))}

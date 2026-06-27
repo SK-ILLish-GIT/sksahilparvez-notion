@@ -7,6 +7,7 @@ import {
   NotionBlock,
   NotionHeading,
   NotionSubheading,
+  SectionMeta,
 } from "@/components/notion/NotionBlock";
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
@@ -327,9 +328,7 @@ export function ExperienceSection() {
               ))}
             </div>
           </div>
-          <p className="mt-1 text-xs text-muted-foreground">
-            Database · {VIEW_LABELS[view]} view
-          </p>
+          <SectionMeta label={VIEW_LABELS[view]} />
         </NotionBlock>
 
         <div className="mt-4 grid grid-cols-1 grid-rows-1">

@@ -82,3 +82,18 @@ export function NotionSubheading({
 export function NotionDivider() {
   return <div className="h-px w-full shrink-0 bg-border" />;
 }
+
+/** Muted line under section titles — e.g. "Database · Timeline view" */
+export function SectionMeta({
+  label,
+  kind = "Database",
+}: {
+  label: string;
+  kind?: "Database" | "Page";
+}) {
+  return (
+    <p className="mt-1 text-xs text-muted-foreground">
+      {kind} · {label} view
+    </p>
+  );
+}
