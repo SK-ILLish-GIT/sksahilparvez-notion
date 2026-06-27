@@ -11,20 +11,32 @@ A Notion-inspired developer portfolio — single-page SPA with sidebar navigatio
 
 ### Layout & UX
 
-- Notion-style sidebar, page header with cover banner, and block-based sections
-- Light / dark theme
-- Custom cursor hints and `⌘K` slash command for quick section jump
-- Cal.com embed for booking calls
+- **Notion-style shell** — fixed sidebar (desktop), slide-out drawer + top bar (mobile), cover banner header, block-based sections
+- **Rich sidebar** — profile photo, name, title, status pill, workspace chip, scroll-spy nav with active indicator, social links, Cal.com, theme toggle, `⌘K` search hint
+- **Hero actions** — 15 min call, Résumé (Google Drive), contact dropdown (social links)
+- **Light / dark theme** — warm beige canvas + white elevated cards in light mode; layered dark surfaces in dark mode
+- **Custom cursor hints** and `⌘K` slash command for quick section jump
+- **Standardized section spacing** — responsive gaps between all sections via `src/lib/layout.ts`
+- **Cal.com embed** for booking calls
+
+### Responsive breakpoints
+
+| Tier   | Width    | Notable layout                                    |
+| ------ | -------- | ------------------------------------------------- |
+| Mobile | `<640px` | Drawer nav, 1-col bento, 2×2 property pills, px-4 |
+| `sm`   | 640px+   | 2-col bento / contact / certs, tighter hero       |
+| `md`   | 768px+   | Fixed sidebar, 1×4 property pills, px-12          |
+| `lg`   | 1024px+  | 3-col projects bento                              |
 
 ### Multi-view sections
 
 | Section            | Views                                                                                               |
 | ------------------ | --------------------------------------------------------------------------------------------------- |
 | **Projects**       | Bento grid + table; detail sheet with GitHub `DETAILS.md`, repo stats, stack, languages, highlights |
-| **Experience**     | Timeline + table                                                                                    |
+| **Experience**     | Timeline + table (shared height — no layout jump on toggle)                                         |
 | **Education**      | Gantt + table                                                                                       |
-| **Certifications** | Kanban (To do / In progress / Done)                                                                 |
-| **Coding**         | Table, problems donut, topics breakdown                                                             |
+| **Certifications** | Kanban (To do / In progress / Done); skeleton cards in empty columns                                |
+| **Coding**         | Table, problems donut, topics breakdown (fixed view height)                                         |
 
 ### Live integrations
 
@@ -33,7 +45,9 @@ A Notion-inspired developer portfolio — single-page SPA with sidebar navigatio
 
 ### Projects bento
 
+- Responsive columns: **1 → 2 → 2 → 3** (mobile → sm → md → lg)
 - Mixed tile sizes: `1×1`, `2×1` (wide), `1×2` (tall)
+- Dummy skeleton tiles fill grid gaps on `sm+` only (hidden on mobile)
 - Highlight bullets on cards, stack tags, direct GitHub / demo links
 - Portfolio stats and “Currently building” widgets
 
@@ -108,21 +122,30 @@ Restart the dev server after changing `.env`.
 
 All portfolio content is JSON under `src/data/content/`:
 
-| File                  | Contents                                  |
-| --------------------- | ----------------------------------------- |
-| `profile.json`        | Name, title, summary, properties          |
-| `site.json`           | Social links, Cal.com, CV, workspace name |
-| `sections.json`       | Sidebar section order & icons             |
-| `experience.json`     | Work history                              |
-| `education.json`      | Degrees & timeline                        |
-| `projects.json`       | Projects, bento sizes, highlights, links  |
-| `skills.json`         | Skill groups                              |
-| `certifications.json` | Kanban certifications                     |
-| `achievements.json`   | CP platforms, handles, ranks              |
-| `contact.json`        | Contact methods                           |
-| `hero-stats.json`     | Hero stat pills                           |
+| File                  | Contents                                      |
+| --------------------- | --------------------------------------------- |
+| `profile.json`        | Name, title, summary, avatar path, properties |
+| `site.json`           | Social links, Cal.com, CV, workspace name     |
+| `sections.json`       | Sidebar section order, labels & icons         |
+| `experience.json`     | Work history                                  |
+| `education.json`      | Degrees & timeline                            |
+| `projects.json`       | Projects, bento sizes, highlights, links      |
+| `skills.json`         | Skill groups                                  |
+| `certifications.json` | Kanban certifications                         |
+| `achievements.json`   | CP platforms, handles, ranks                  |
+| `contact.json`        | Contact methods                               |
+| `hero-stats.json`     | Hero stat pills                               |
 
 Types are defined in `src/types/portfolio.ts`. The barrel export is `src/data/index.ts`.
+
+### Static assets
+
+| Path                   | Purpose                        |
+| ---------------------- | ------------------------------ |
+| `public/sk_sahil.jpeg` | Hero avatar, favicon, OG image |
+| `public/*.png`         | Cover banner, logos            |
+
+Set `profile.avatar` in `profile.json` (e.g. `"/sk_sahil.jpeg"`) to use the hero photo.
 
 ---
 
@@ -158,13 +181,18 @@ Writes to `src/data/content/codolio-snapshot.json`.
 ```
 src/
 ├── components/
-│   ├── notion/          # Blocks, sidebar, property table
+│   ├── notion/          # Blocks, sidebar, property table, slash command
 │   ├── sections/        # Page sections (Projects, Experience, …)
 │   ├── projects/        # GitHub DETAILS.md, languages, detail body
+│   ├── contact/         # Contact social dropdown
+│   ├── booking/         # Cal.com embed
 │   └── ui/              # shadcn components
 ├── data/content/        # Portfolio JSON
 ├── hooks/               # useCodolioStats, useGithubProject
-├── lib/                 # codolio, github, utils
+├── lib/
+│   ├── layout.ts        # Breakpoints, section spacing, grid constants
+│   ├── codolio.ts       # Codolio fetch + normalization
+│   └── github.ts        # GitHub API client
 └── types/               # TypeScript interfaces
 ```
 
