@@ -58,14 +58,6 @@ function App() {
         </div>
 
         <SlashCommand />
-
-        <div className="fixed bottom-4 right-4 hidden text-xs text-muted-foreground md:block">
-          Press{" "}
-          <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono">
-            ⌘K
-          </kbd>{" "}
-          to search
-        </div>
       </CursorGuideProvider>
     </ThemeProvider>
   );

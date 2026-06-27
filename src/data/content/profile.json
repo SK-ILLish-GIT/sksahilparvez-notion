@@ -2,6 +2,7 @@
   "name": "SK Sahil Parvez",
   "title": "Software Engineer",
   "pageIcon": "👨‍💻",
+  "avatar": "/sk_sahil.jpeg",
   "tagline": "Building analytics platforms, observability systems & scalable backends.",
   "summary": "Software Engineer with experience building analytics platforms, observability systems, and distributed backend services using React.js, GraphQL, Node.js, Java Spring Boot, and OpenTelemetry. Skilled in CI/CD automation, telemetry pipelines, and scalable microservices architecture.",
   "taglineRotation": [

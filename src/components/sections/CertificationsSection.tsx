@@ -189,6 +189,29 @@ function CertCard({
   );
 }
 
+function CertFillerCard({ status }: { status: CertificationStatus }) {
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        "pointer-events-none select-none rounded-md border border-dashed border-border/50 bg-background/40 px-3 py-2.5",
+        "border-l-[3px]",
+        status === "todo" && "border-l-muted-foreground/30",
+        status === "in-progress" && "border-l-amber-400/40",
+        status === "done" && "border-l-emerald-500/40",
+      )}
+    >
+      <div className="flex items-start gap-2.5">
+        <div className="h-5 w-5 shrink-0 rounded bg-muted/30" />
+        <div className="min-w-0 flex-1 space-y-2">
+          <div className="h-2.5 w-full max-w-[90%] rounded-full bg-muted/30" />
+          <div className="h-2 w-full max-w-[60%] rounded-full bg-muted/20" />
+        </div>
+      </div>
+    </div>
+  );
+}
+
 function boardGridClass(columnCount: number): string {
   if (columnCount === 1) return "sm:grid-cols-1";
   if (columnCount === 2) return "sm:grid-cols-2";
@@ -273,9 +296,7 @@ export function CertificationsSection() {
                           />
                         ))
                       ) : (
-                        <p className="flex flex-1 items-center justify-center px-1 py-6 text-center text-xs text-muted-foreground">
-                          No certifications planned
-                        </p>
+                        <CertFillerCard status={col.status} />
                       )}
                     </div>
                   </div>

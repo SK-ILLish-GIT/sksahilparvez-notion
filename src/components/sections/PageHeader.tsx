@@ -32,8 +32,20 @@ export function PageHeader() {
 
       <div className={cn("mx-auto max-w-[900px]", PAGE_X)}>
         <div className={HERO_AVATAR_OFFSET}>
-          <div className="mb-4 inline-flex rounded-md bg-background p-1.5 text-5xl leading-none shadow-sm ring-1 ring-border">
-            {profile.pageIcon}
+          <div className="mb-4 inline-flex overflow-hidden rounded-md bg-background p-1 shadow-sm ring-1 ring-border">
+            {profile.avatar ? (
+              <div className="relative h-16 w-16 overflow-hidden rounded-sm sm:h-[4.5rem] sm:w-[4.5rem]">
+                <img
+                  src={profile.avatar}
+                  alt={profile.name}
+                  className="absolute left-1/2 top-1/2 h-[108%] w-[108%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_22%]"
+                />
+              </div>
+            ) : (
+              <span className="p-1.5 text-5xl leading-none">
+                {profile.pageIcon}
+              </span>
+            )}
           </div>
 
           <h1 className={cn(HERO_TITLE, "text-foreground")}>{profile.name}</h1>

@@ -27,11 +27,6 @@ export function ContactSection() {
           ))}
           <CalBookingButton layout="card" />
         </div>
-
-        <footer className="mt-12 border-t border-border pt-6 text-center text-xs text-muted-foreground">
-          Last updated {portfolio.site.lastUpdated} · Built with React &
-          shadcn/ui
-        </footer>
       </section>
     </FadeIn>
   );

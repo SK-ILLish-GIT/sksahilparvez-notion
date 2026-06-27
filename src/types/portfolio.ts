@@ -9,6 +9,7 @@ export interface Profile {
   name: string;
   title: string;
   pageIcon: string;
+  avatar?: string;
   tagline: string;
   summary: string;
   taglineRotation: string[];

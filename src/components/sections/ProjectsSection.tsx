@@ -43,7 +43,8 @@ type BentoLayoutItem =
       id: string;
       widget: "stats" | "building";
       size: BentoTileSize;
-    };
+    }
+  | { type: "filler"; id: string; size: BentoTileSize };
 
 const BENTO_LAYOUT: BentoLayoutItem[] = [
   { type: "project", id: "coldmail" },
@@ -54,7 +55,9 @@ const BENTO_LAYOUT: BentoLayoutItem[] = [
   { type: "widget", id: "stats", widget: "stats", size: "wide" },
   { type: "project", id: "gametheory" },
   { type: "project", id: "file-organizer" },
+  { type: "filler", id: "grid-filler-1", size: "tall" },
   { type: "project", id: "mini-project" },
+  { type: "filler", id: "grid-filler-2", size: "small" },
 ];
 
 function isProjectInProgress(period: string) {
@@ -467,6 +470,28 @@ function BuildingWidget({ size }: { size: BentoTileSize }) {
   );
 }
 
+function BentoFillerCard({ size }: { size: BentoTileSize }) {
+  return (
+    <div
+      aria-hidden
+      className={cn(
+        "pointer-events-none flex h-full min-h-40 select-none flex-col justify-between rounded-lg border border-dashed border-border/50 bg-muted/10 p-4 max-sm:hidden",
+        TILE_SIZE_CLASS[size],
+      )}
+    >
+      <div className="h-2 w-10 rounded-full bg-muted/30" />
+      <div className="space-y-2">
+        <div className="h-2 w-full max-w-[85%] rounded-full bg-muted/25" />
+        <div className="h-2 w-full max-w-[65%] rounded-full bg-muted/20" />
+      </div>
+      <div className="flex gap-1.5">
+        <div className="h-5 w-12 rounded-full bg-muted/20" />
+        <div className="h-5 w-10 rounded-full bg-muted/15" />
+      </div>
+    </div>
+  );
+}
+
 function BentoWidget({
   widget,
   size,
@@ -496,6 +521,9 @@ export function ProjectsSection() {
 
         <div className={cn("mt-4", PROJECTS_BENTO_GRID)}>
           {BENTO_LAYOUT.map((item) => {
+            if (item.type === "filler") {
+              return <BentoFillerCard key={item.id} size={item.size} />;
+            }
             if (item.type === "widget") {
               return (
                 <BentoWidget

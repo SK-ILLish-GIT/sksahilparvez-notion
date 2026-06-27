@@ -5,7 +5,7 @@ import { SocialLinkButton } from "@/components/ui/BrandLogo";
 import { scrollToSection } from "@/lib/utils";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
 import { cn } from "@/lib/utils";
-import { Menu, Moon, Sun } from "lucide-react";
+import { ChevronRight, Menu, Moon, Sun } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet";
 import { useTheme } from "@/components/theme-provider";
@@ -14,31 +14,130 @@ interface NotionSidebarProps {
   activeSection: string;
 }
 
+function ProfileAvatar({ size = "md" }: { size?: "sm" | "md" }) {
+  const { profile } = portfolio;
+  const boxClass = size === "sm" ? "h-7 w-7" : "h-9 w-9";
+
+  if (profile.avatar) {
+    return (
+      <div
+        className={cn(
+          "relative shrink-0 overflow-hidden rounded-md ring-1 ring-border",
+          boxClass,
+        )}
+      >
+        <img
+          src={profile.avatar}
+          alt=""
+          className="absolute left-1/2 top-1/2 h-[108%] w-[108%] max-w-none -translate-x-1/2 -translate-y-1/2 object-cover object-[center_22%]"
+        />
+      </div>
+    );
+  }
+
+  return (
+    <span
+      className={cn(
+        "flex shrink-0 items-center justify-center rounded-md bg-muted/50 ring-1 ring-border",
+        boxClass,
+        size === "sm" ? "text-base" : "text-lg",
+      )}
+    >
+      {profile.pageIcon}
+    </span>
+  );
+}
+
+function SidebarWorkspaceHeader({ onNavigate }: { onNavigate?: () => void }) {
+  const { profile, site } = portfolio;
+  const statusProp = profile.properties.find((p) => p.type === "status");
+
+  return (
+    <div className="shrink-0 border-b border-border bg-gradient-to-b from-muted/20 to-transparent">
+      <button
+        type="button"
+        data-cursor-hint="Go to home"
+        onClick={() => {
+          scrollToSection("hero");
+          onNavigate?.();
+        }}
+        className="group flex w-full items-start gap-3 px-3 py-3 text-left transition-colors hover:bg-notion-hover"
+      >
+        <ProfileAvatar />
+        <div className="min-w-0 flex-1">
+          <p className="truncate text-sm font-semibold leading-tight text-foreground">
+            {profile.name}
+          </p>
+          <p className="mt-0.5 truncate text-xs text-muted-foreground">
+            {profile.title}
+          </p>
+          {statusProp && (
+            <span className="mt-1.5 inline-flex items-center gap-1.5 rounded-full border border-emerald-500/20 bg-emerald-500/10 px-2 py-0.5 text-[10px] font-medium text-emerald-700 dark:text-emerald-400">
+              <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 shadow-[0_0_6px_rgba(16,185,129,0.8)]" />
+              {statusProp.value}
+            </span>
+          )}
+        </div>
+        <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground/50 transition-transform group-hover:translate-x-0.5 group-hover:text-muted-foreground" />
+      </button>
+
+      <div className="mx-3 mb-3 flex items-center gap-1.5 rounded-md border border-border/60 bg-background/50 px-2.5 py-1.5 shadow-sm">
+        <span className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+          Workspace
+        </span>
+        <span className="text-muted-foreground/40">·</span>
+        <span className="truncate text-[11px] font-medium text-foreground/90">
+          {site.workspaceName}
+        </span>
+      </div>
+    </div>
+  );
+}
+
 function SidebarNav({
   activeSection,
   onNavigate,
 }: NotionSidebarProps & { onNavigate?: () => void }) {
   return (
-    <nav className="flex flex-col gap-0.5 p-2">
-      {portfolio.sections.map((section) => (
-        <button
-          key={section.id}
-          data-cursor-hint={`Go to ${section.label}`}
-          onClick={() => {
-            scrollToSection(section.id);
-            onNavigate?.();
-          }}
-          className={cn(
-            "flex items-center gap-2 rounded-md px-2.5 py-1.5 text-left text-sm transition-colors",
-            activeSection === section.id
-              ? "bg-notion-hover font-medium text-foreground"
-              : "text-muted-foreground hover:bg-notion-hover hover:text-foreground",
-          )}
-        >
-          <span className="text-base leading-none">{section.icon}</span>
-          <span className="truncate">{section.label}</span>
-        </button>
-      ))}
+    <nav className="flex flex-col gap-0.5 px-2 pb-2">
+      <p className="px-2 pb-1 pt-3 text-[10px] font-semibold uppercase tracking-wider text-muted-foreground">
+        Pages
+      </p>
+      {portfolio.sections.map((section) => {
+        const isActive = activeSection === section.id;
+
+        return (
+          <button
+            key={section.id}
+            data-cursor-hint={`Go to ${section.label}`}
+            onClick={() => {
+              scrollToSection(section.id);
+              onNavigate?.();
+            }}
+            className={cn(
+              "flex items-center gap-2.5 rounded-md px-2 py-1.5 text-left text-sm transition-all",
+              isActive
+                ? "bg-notion-hover font-medium text-foreground shadow-sm ring-1 ring-border/50"
+                : "text-muted-foreground hover:bg-notion-hover hover:text-foreground",
+            )}
+          >
+            <span
+              className={cn(
+                "flex h-6 w-6 shrink-0 items-center justify-center rounded-sm text-sm leading-none transition-colors",
+                isActive
+                  ? "bg-emerald-500/15 ring-1 ring-emerald-500/20"
+                  : "bg-muted/40",
+              )}
+            >
+              {section.icon}
+            </span>
+            <span className="truncate">{section.label}</span>
+            {isActive && (
+              <span className="ml-auto h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-500" />
+            )}
+          </button>
+        );
+      })}
     </nav>
   );
 }
@@ -97,20 +196,29 @@ function SidebarFooter() {
   ] as const;
 
   return (
-    <div className="shrink-0 space-y-2.5 border-t border-border p-3">
-      <div className="grid w-full grid-cols-4 justify-items-center gap-1">
-        {socialLinks.map((link) => (
-          <SocialLinkButton
-            key={link.label}
-            href={link.href}
-            label={link.label}
-            logo={link.logo}
-            hint={`Visit ${link.label}`}
-          />
-        ))}
+    <div className="shrink-0">
+      <p className="px-3 py-2 text-xs text-muted-foreground">
+        Press{" "}
+        <kbd className="rounded border border-border bg-muted px-1.5 py-0.5 font-mono text-[10px]">
+          ⌘K
+        </kbd>{" "}
+        to search
+      </p>
+      <div className="space-y-2.5 border-t border-border p-3">
+        <div className="grid w-full grid-cols-4 justify-items-center gap-1">
+          {socialLinks.map((link) => (
+            <SocialLinkButton
+              key={link.label}
+              href={link.href}
+              label={link.label}
+              logo={link.logo}
+              hint={`Visit ${link.label}`}
+            />
+          ))}
+        </div>
+        <CalBookingButton layout="full" />
+        <ThemeToggle />
       </div>
-      <CalBookingButton layout="full" />
-      <ThemeToggle />
     </div>
   );
 }
@@ -119,13 +227,8 @@ function SidebarFooter() {
 export function NotionSidebar({ activeSection }: NotionSidebarProps) {
   return (
     <aside className="fixed left-0 top-0 z-30 hidden h-screen w-60 flex-col overflow-hidden border-r border-border bg-notion-sidebar md:flex">
-      <div className="shrink-0 border-b border-border px-4 py-4">
-        <p className="text-xs font-medium text-muted-foreground">Workspace</p>
-        <p className="mt-0.5 truncate text-sm font-semibold">
-          {portfolio.site.workspaceName}
-        </p>
-      </div>
-      <div className="min-h-0 flex-1 overflow-y-auto py-2">
+      <SidebarWorkspaceHeader />
+      <div className="min-h-0 flex-1 overflow-y-auto">
         <SidebarNav activeSection={activeSection} />
       </div>
       <SidebarFooter />
@@ -136,6 +239,7 @@ export function NotionSidebar({ activeSection }: NotionSidebarProps) {
 /** Top bar + slide-out nav — mobile only */
 export function MobileNavBar({ activeSection }: NotionSidebarProps) {
   const { theme, toggleTheme } = useTheme();
+  const { profile } = portfolio;
   const [mobileOpen, setMobileOpen] = useState(false);
 
   return (
@@ -150,15 +254,8 @@ export function MobileNavBar({ activeSection }: NotionSidebarProps) {
           side="left"
           className="flex h-full w-[min(100vw-2rem,18rem)] flex-col p-0"
         >
-          <div className="shrink-0 border-b border-border px-4 py-4">
-            <p className="text-xs font-medium text-muted-foreground">
-              Workspace
-            </p>
-            <p className="mt-0.5 font-semibold">
-              {portfolio.site.workspaceName}
-            </p>
-          </div>
-          <div className="min-h-0 flex-1 overflow-y-auto py-2">
+          <SidebarWorkspaceHeader onNavigate={() => setMobileOpen(false)} />
+          <div className="min-h-0 flex-1 overflow-y-auto">
             <SidebarNav
               activeSection={activeSection}
               onNavigate={() => setMobileOpen(false)}
@@ -169,9 +266,16 @@ export function MobileNavBar({ activeSection }: NotionSidebarProps) {
           </div>
         </SheetContent>
       </Sheet>
-      <span className="truncate text-sm font-semibold">
-        {portfolio.profile.pageIcon} Sahil
-      </span>
+
+      <button
+        type="button"
+        onClick={() => scrollToSection("hero")}
+        className="flex min-w-0 items-center gap-2 rounded-md px-1 py-0.5 transition-colors hover:bg-notion-hover"
+      >
+        <ProfileAvatar size="sm" />
+        <span className="truncate text-sm font-semibold">{profile.name}</span>
+      </button>
+
       <div className="flex shrink-0">
         <Button
           variant="ghost"
@@ -195,23 +299,31 @@ export function useActiveSection() {
 
   useEffect(() => {
     const ids = portfolio.sections.map((s) => s.id);
-    const observers: IntersectionObserver[] = [];
 
-    ids.forEach((id) => {
-      const el = document.getElementById(id);
-      if (!el) return;
+    const updateActiveSection = () => {
+      // Line ~32% from top — section whose top has passed this wins (last in doc order)
+      const marker = window.innerHeight * 0.32;
+      let current = ids[0];
 
-      const observer = new IntersectionObserver(
-        ([entry]) => {
-          if (entry.isIntersecting) setActiveSection(id);
-        },
-        { rootMargin: "-20% 0px -60% 0px", threshold: 0 },
-      );
-      observer.observe(el);
-      observers.push(observer);
-    });
+      for (const id of ids) {
+        const el = document.getElementById(id);
+        if (!el) continue;
+        if (el.getBoundingClientRect().top <= marker) {
+          current = id;
+        }
+      }
 
-    return () => observers.forEach((o) => o.disconnect());
+      setActiveSection(current);
+    };
+
+    updateActiveSection();
+    window.addEventListener("scroll", updateActiveSection, { passive: true });
+    window.addEventListener("resize", updateActiveSection);
+
+    return () => {
+      window.removeEventListener("scroll", updateActiveSection);
+      window.removeEventListener("resize", updateActiveSection);
+    };
   }, []);
 
   return activeSection;
