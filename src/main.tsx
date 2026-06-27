@@ -20,6 +20,7 @@ import { CertificationsSection } from "@/components/sections/CertificationsSecti
 import { AchievementsSection } from "@/components/sections/AchievementsSection";
 import { VolunteerSection } from "@/components/sections/VolunteerSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { PageFooter } from "@/components/sections/PageFooter";
 import { PAGE_PB, PAGE_X, SECTION_STACK } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import "@/index.css";
@@ -55,6 +56,7 @@ function App() {
               <AchievementsSection />
               <VolunteerSection />
               <ContactSection />
+              <PageFooter />
             </div>
           </main>
         </div>
