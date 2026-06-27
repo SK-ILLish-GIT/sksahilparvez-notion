@@ -6,6 +6,7 @@ import { CpProblemsChart } from "@/components/sections/CpProblemsChart";
 import { CpTopicsChart } from "@/components/sections/CpTopicsChart";
 import { Badge } from "@/components/ui/badge";
 import { useCodolioStats } from "@/hooks/useCodolioStats";
+import { SECTION_SCROLL_MT } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 
@@ -128,7 +129,7 @@ export function AchievementsSection() {
 
   return (
     <FadeIn>
-      <section id="achievements" className="scroll-mt-8 pt-12">
+      <section id="achievements" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <NotionHeading>Competitive Programming</NotionHeading>

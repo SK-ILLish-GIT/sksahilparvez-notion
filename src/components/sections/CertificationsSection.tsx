@@ -11,7 +11,12 @@ import {
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
-import { CERT_CARD_MOBILE, CERTS_CAROUSEL, CERTS_SCROLL } from "@/lib/layout";
+import {
+  CERT_CARD_MOBILE,
+  CERTS_CAROUSEL,
+  CERTS_SCROLL,
+  SECTION_SCROLL_MT,
+} from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { Check, Circle, CircleDashed, ExternalLink } from "lucide-react";
 
@@ -206,7 +211,7 @@ export function CertificationsSection() {
 
   return (
     <FadeIn>
-      <section id="certifications" className="scroll-mt-8 pt-12">
+      <section id="certifications" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <NotionHeading>Certifications</NotionHeading>
           <p className="mt-1 text-xs text-muted-foreground">

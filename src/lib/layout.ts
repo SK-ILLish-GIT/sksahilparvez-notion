@@ -3,10 +3,10 @@
  *
  * | Tier   | Width        | Shell / layout |
  * |--------|--------------|----------------|
- * | mobile | < 640px      | Drawer nav, px-4, 1-col sections |
- * | sm     | 640–767px    | Hero upgrade, 2-col bento/contact/certs |
- * | md     | 768–1023px   | Sidebar, px-12, pills 1×4, 2-col bento |
- * | lg     | 1024px+      | 3-col bento |
+ * | mobile | < 640px      | Drawer nav, px-4, section gap 24px |
+ * | sm     | 640–767px    | Hero upgrade, section gap 32px |
+ * | md     | 768–1023px   | Sidebar, px-12, section gap 40px |
+ * | lg     | 1024px+      | 3-col bento, section gap 48px |
  */
 
 /** Main content horizontal padding */
@@ -14,6 +14,13 @@ export const PAGE_X = "px-4 md:px-12";
 
 /** Main content bottom padding */
 export const PAGE_PB = "pb-6 md:pb-10";
+
+/** Vertical stack: gap between sections (tighter on small screens) */
+export const SECTION_STACK =
+  "flex flex-col gap-6 pt-6 sm:gap-8 sm:pt-8 md:gap-10 md:pt-10 lg:gap-12 lg:pt-12";
+
+/** Anchor scroll offset for in-page section links */
+export const SECTION_SCROLL_MT = "scroll-mt-8 md:scroll-mt-10";
 
 /** Hero cover height */
 export const HERO_COVER = "relative h-44 w-full sm:h-52 md:h-60";

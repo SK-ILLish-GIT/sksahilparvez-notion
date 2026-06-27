@@ -80,5 +80,5 @@ export function NotionSubheading({
 }
 
 export function NotionDivider() {
-  return <div className="my-6 h-px w-full bg-border" />;
+  return <div className="h-px w-full shrink-0 bg-border" />;
 }

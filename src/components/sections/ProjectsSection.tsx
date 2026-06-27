@@ -19,6 +19,7 @@ import {
   BENTO_WIDGET_SPAN,
   PROJECTS_BENTO_GRID,
   PROJECT_BENTO_SPAN,
+  SECTION_SCROLL_MT,
 } from "@/lib/layout";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
@@ -487,7 +488,7 @@ export function ProjectsSection() {
 
   return (
     <FadeIn>
-      <section id="projects" className="scroll-mt-8 pt-12">
+      <section id="projects" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <NotionHeading>Projects</NotionHeading>
           <p className="mt-1 text-xs text-muted-foreground">Database</p>

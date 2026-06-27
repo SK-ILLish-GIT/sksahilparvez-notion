@@ -26,6 +26,7 @@ import {
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
+import { SECTION_SCROLL_MT } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 
 const ROW_HEIGHT = 38;
@@ -319,7 +320,7 @@ export function EducationSection() {
 
   return (
     <FadeIn>
-      <section id="education" className="scroll-mt-8 pt-12">
+      <section id="education" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <NotionHeading>Education</NotionHeading>

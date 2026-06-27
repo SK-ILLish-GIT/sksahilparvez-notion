@@ -2,11 +2,12 @@ import { portfolio } from "@/data";
 import { NotionBlock, NotionHeading } from "@/components/notion/NotionBlock";
 import { CalloutBlock } from "@/components/notion/CalloutBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
+import { SECTION_SCROLL_MT } from "@/lib/layout";
 
 export function AboutSection() {
   return (
     <FadeIn>
-      <section id="about" className="scroll-mt-8 pt-12">
+      <section id="about" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <NotionHeading>About</NotionHeading>
         </NotionBlock>

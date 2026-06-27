@@ -6,7 +6,7 @@ import {
   NotionSubheading,
 } from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
-import { SKILLS_INNER_X } from "@/lib/layout";
+import { SKILLS_INNER_X, SECTION_SCROLL_MT } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 
 function SkillTile({ skill }: { skill: SkillItem }) {
@@ -51,7 +51,7 @@ function SkillGalleryGroup({ group }: { group: SkillGroup }) {
 export function SkillsSection() {
   return (
     <FadeIn>
-      <section id="skills" className="scroll-mt-8 pt-12">
+      <section id="skills" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <NotionHeading>Skills</NotionHeading>
           <p className="mt-1 text-xs text-muted-foreground">

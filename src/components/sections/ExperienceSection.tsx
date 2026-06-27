@@ -11,6 +11,7 @@ import {
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
+import { SECTION_SCROLL_MT } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { MapPin } from "lucide-react";
 
@@ -21,8 +22,9 @@ const VIEW_LABELS: Record<ViewMode, string> = {
   table: "Table",
 };
 
-const TABLE_ROW_HEIGHT = 112;
-const TABLE_STACK_MAX_HEIGHT = 56;
+const TABLE_STACK_MAX_HEIGHT = 44;
+const EXPERIENCE_TABLE_GRID =
+  "grid-cols-[minmax(7rem,0.85fr)_minmax(10.5rem,1.4fr)_minmax(0,1fr)]";
 
 function CompanyLogo({
   item,
@@ -251,7 +253,12 @@ function StackBadges({
 function TableView({ onSelect }: { onSelect: (item: ExperienceItem) => void }) {
   return (
     <div className="overflow-x-auto rounded-lg border border-border">
-      <div className="grid grid-cols-3 bg-muted/40 px-4 py-2.5 text-xs font-medium text-muted-foreground">
+      <div
+        className={cn(
+          "grid bg-muted/40 px-4 py-2 text-xs font-medium text-muted-foreground",
+          EXPERIENCE_TABLE_GRID,
+        )}
+      >
         <span>Company</span>
         <span>Role</span>
         <span>Stack</span>
@@ -262,18 +269,20 @@ function TableView({ onSelect }: { onSelect: (item: ExperienceItem) => void }) {
           type="button"
           onClick={() => onSelect(item)}
           data-cursor-hint="Open experience details"
-          className="grid grid-cols-3 items-center gap-3 border-b border-border px-4 py-4 text-left text-sm transition-colors last:border-b-0 hover:bg-notion-hover"
-          style={{ minHeight: TABLE_ROW_HEIGHT }}
+          className={cn(
+            "grid min-h-[4.75rem] items-center gap-3 border-b border-border px-4 py-3 text-left text-sm transition-colors last:border-b-0 hover:bg-notion-hover",
+            EXPERIENCE_TABLE_GRID,
+          )}
         >
-          <span className="flex min-w-0 items-center gap-2 font-medium">
-            <CompanyLogo item={item} size="sm" />
+          <span className="flex min-w-0 items-center gap-2.5 font-medium">
+            <CompanyLogo item={item} size="md" />
             <span className="truncate">{item.company}</span>
           </span>
           <span className="min-w-0">
-            <span className="block leading-snug text-muted-foreground">
+            <span className="block truncate text-sm leading-snug text-muted-foreground">
               {item.role}
             </span>
-            <span className="mt-1 block text-xs text-muted-foreground">
+            <span className="mt-0.5 block truncate text-xs leading-snug text-muted-foreground/80">
               {item.period}
             </span>
           </span>
@@ -290,7 +299,7 @@ export function ExperienceSection() {
 
   return (
     <FadeIn>
-      <section id="experience" className="scroll-mt-8 pt-12">
+      <section id="experience" className={SECTION_SCROLL_MT}>
         <NotionBlock>
           <div className="flex flex-wrap items-center justify-between gap-3">
             <NotionHeading>Experience</NotionHeading>
@@ -318,9 +327,25 @@ export function ExperienceSection() {
           </p>
         </NotionBlock>
 
-        <div className="mt-4">
-          {view === "timeline" && <TimelineView onSelect={setSelected} />}
-          {view === "table" && <TableView onSelect={setSelected} />}
+        <div className="mt-4 grid grid-cols-1 grid-rows-1">
+          <div
+            className={cn(
+              "col-start-1 row-start-1 min-w-0",
+              view !== "timeline" && "pointer-events-none invisible",
+            )}
+            aria-hidden={view !== "timeline"}
+          >
+            <TimelineView onSelect={setSelected} />
+          </div>
+          <div
+            className={cn(
+              "col-start-1 row-start-1 min-w-0",
+              view !== "table" && "pointer-events-none invisible",
+            )}
+            aria-hidden={view !== "table"}
+          >
+            <TableView onSelect={setSelected} />
+          </div>
         </div>
 
         <Sheet open={!!selected} onOpenChange={(o) => !o && setSelected(null)}>
