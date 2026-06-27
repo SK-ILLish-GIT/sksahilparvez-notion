@@ -49,7 +49,13 @@ function ProfileAvatar({ size = "md" }: { size?: "sm" | "md" }) {
   );
 }
 
-function SidebarWorkspaceHeader({ onNavigate }: { onNavigate?: () => void }) {
+function SidebarWorkspaceHeader({
+  onNavigate,
+  inSheet,
+}: {
+  onNavigate?: () => void;
+  inSheet?: boolean;
+}) {
   const { profile, site } = portfolio;
   const statusProp = profile.properties.find((p) => p.type === "status");
 
@@ -62,7 +68,10 @@ function SidebarWorkspaceHeader({ onNavigate }: { onNavigate?: () => void }) {
           scrollToSection("hero");
           onNavigate?.();
         }}
-        className="group flex w-full items-start gap-3 px-3 py-3 text-left transition-colors hover:bg-notion-hover"
+        className={cn(
+          "group flex w-full items-start gap-3 px-3 py-3 text-left transition-colors hover:bg-notion-hover",
+          inSheet && "pr-12",
+        )}
       >
         <ProfileAvatar />
         <div className="min-w-0 flex-1">
@@ -79,7 +88,9 @@ function SidebarWorkspaceHeader({ onNavigate }: { onNavigate?: () => void }) {
             </span>
           )}
         </div>
-        <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground/50 transition-transform group-hover:translate-x-0.5 group-hover:text-muted-foreground" />
+        {!inSheet && (
+          <ChevronRight className="mt-0.5 h-4 w-4 shrink-0 text-muted-foreground/50 transition-transform group-hover:translate-x-0.5 group-hover:text-muted-foreground" />
+        )}
       </button>
 
       <div className="mx-3 mb-3 flex items-center gap-1.5 rounded-md border border-border/60 bg-background/50 px-2.5 py-1.5 shadow-sm">
@@ -255,7 +266,10 @@ export function MobileNavBar({ activeSection }: NotionSidebarProps) {
           side="left"
           className="flex h-full w-[min(100vw-2rem,18rem)] flex-col p-0"
         >
-          <SidebarWorkspaceHeader onNavigate={() => setMobileOpen(false)} />
+          <SidebarWorkspaceHeader
+            inSheet
+            onNavigate={() => setMobileOpen(false)}
+          />
           <div className="min-h-0 flex-1 overflow-y-auto">
             <SidebarNav
               activeSection={activeSection}
