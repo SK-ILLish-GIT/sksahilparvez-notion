@@ -26,7 +26,7 @@ import {
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
-import { SECTION_SCROLL_MT } from "@/lib/layout";
+import { SECTION_SCROLL_MT, SURFACE_ELEVATED } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 
 const ROW_HEIGHT = 38;
@@ -370,7 +370,10 @@ export function EducationSection() {
               <div
                 ref={scrollRef}
                 onScroll={handleScroll}
-                className="w-full overflow-x-auto overflow-y-hidden rounded-lg border border-border bg-card scroll-smooth"
+                className={cn(
+                  "w-full overflow-x-auto overflow-y-hidden rounded-lg border border-border bg-card scroll-smooth",
+                  SURFACE_ELEVATED,
+                )}
                 style={{ height: timeline.timelineHeight }}
               >
                 <div
@@ -517,7 +520,12 @@ export function EducationSection() {
                 </div>
               </div>
             ) : (
-              <div className="overflow-x-auto rounded-lg border border-border">
+              <div
+                className={cn(
+                  "overflow-x-auto rounded-lg border border-border bg-card",
+                  SURFACE_ELEVATED,
+                )}
+              >
                 <div className="grid grid-cols-[minmax(160px,2fr)_minmax(140px,1.5fr)_minmax(80px,0.8fr)] bg-muted/40 px-3 py-1.5 text-xs font-medium text-muted-foreground">
                   <span>Name</span>
                   <span>Degree</span>

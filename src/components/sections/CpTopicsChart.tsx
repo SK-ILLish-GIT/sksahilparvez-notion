@@ -15,6 +15,7 @@ import {
 } from "@/lib/cp-topic-categories";
 import type { CpStackedTopicRow } from "@/lib/cp-topic-categories";
 import type { CpTopicPlatformSection } from "@/types/portfolio";
+import { SURFACE_ELEVATED } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { Sheet, SheetContent } from "@/components/ui/sheet";
 import { CpDataSourceIndicator } from "@/components/sections/CpLiveIndicator";
@@ -270,7 +271,8 @@ export function CpTopicsChart({
     <>
       <div
         className={cn(
-          "flex flex-col overflow-hidden rounded-md border border-border bg-accent/10 transition-opacity",
+          "flex flex-col overflow-hidden rounded-md border border-border bg-card transition-opacity dark:bg-accent/10",
+          SURFACE_ELEVATED,
           loading && "opacity-60",
           className,
         )}

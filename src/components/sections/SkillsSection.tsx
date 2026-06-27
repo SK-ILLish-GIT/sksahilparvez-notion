@@ -6,7 +6,11 @@ import {
   NotionSubheading,
 } from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
-import { SKILLS_INNER_X, SECTION_SCROLL_MT } from "@/lib/layout";
+import {
+  SKILLS_INNER_X,
+  SECTION_SCROLL_MT,
+  SURFACE_ELEVATED,
+} from "@/lib/layout";
 import { cn } from "@/lib/utils";
 
 function SkillTile({ skill }: { skill: SkillItem }) {
@@ -61,7 +65,8 @@ export function SkillsSection() {
 
         <div
           className={cn(
-            "mt-4 space-y-4 rounded-lg border border-border bg-card/40",
+            "mt-4 space-y-4 rounded-lg border border-border bg-card",
+            SURFACE_ELEVATED,
             SKILLS_INNER_X,
           )}
         >

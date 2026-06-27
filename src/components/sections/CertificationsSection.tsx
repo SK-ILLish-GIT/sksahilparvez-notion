@@ -16,6 +16,7 @@ import {
   CERTS_CAROUSEL,
   CERTS_SCROLL,
   SECTION_SCROLL_MT,
+  SURFACE_ELEVATED,
 } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { Check, Circle, CircleDashed, ExternalLink } from "lucide-react";
@@ -194,7 +195,7 @@ function CertFillerCard({ status }: { status: CertificationStatus }) {
     <div
       aria-hidden
       className={cn(
-        "pointer-events-none select-none rounded-md border border-dashed border-border/50 bg-background/40 px-3 py-2.5",
+        "pointer-events-none select-none rounded-md border border-dashed border-border bg-card px-3 py-2.5",
         "border-l-[3px]",
         status === "todo" && "border-l-muted-foreground/30",
         status === "in-progress" && "border-l-amber-400/40",
@@ -242,7 +243,12 @@ export function CertificationsSection() {
           </p>
         </NotionBlock>
 
-        <div className="mt-4 overflow-hidden rounded-lg border border-border bg-card">
+        <div
+          className={cn(
+            "mt-4 overflow-hidden rounded-lg border border-border bg-card",
+            SURFACE_ELEVATED,
+          )}
+        >
           <div className={CERTS_SCROLL}>
             <div
               className={cn(

@@ -20,6 +20,7 @@ import {
   PROJECTS_BENTO_GRID,
   PROJECT_BENTO_SPAN,
   SECTION_SCROLL_MT,
+  SURFACE_ELEVATED,
 } from "@/lib/layout";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
@@ -291,6 +292,7 @@ function ProjectBentoCard({
       data-cursor-hint="Open project details"
       className={cn(
         "group relative flex h-full min-h-40 flex-col overflow-hidden rounded-lg border border-border bg-card p-4 text-left transition-all",
+        SURFACE_ELEVATED,
         "hover:border-primary/25 hover:bg-notion-hover hover:shadow-sm",
         BENTO_GRID_CLASS[project.bentoSize],
       )}
@@ -395,7 +397,8 @@ function ProjectStatsWidget({ size }: { size: BentoTileSize }) {
     <div
       aria-hidden
       className={cn(
-        "flex h-full min-h-40 flex-col justify-between rounded-lg border border-border bg-muted/20 p-4",
+        "flex h-full min-h-40 flex-col justify-between rounded-lg border border-border bg-card p-4",
+        SURFACE_ELEVATED,
         TILE_SIZE_CLASS[size],
       )}
     >
@@ -434,7 +437,8 @@ function BuildingWidget({ size }: { size: BentoTileSize }) {
   return (
     <div
       className={cn(
-        "flex h-full min-h-40 flex-col rounded-lg border border-amber-300/40 bg-amber-50/30 p-4 dark:border-amber-800/50 dark:bg-amber-950/15",
+        "flex h-full min-h-40 flex-col rounded-lg border border-amber-300/40 bg-card p-4 dark:border-amber-800/50 dark:bg-amber-950/15",
+        SURFACE_ELEVATED,
         TILE_SIZE_CLASS[size],
       )}
     >
@@ -475,7 +479,8 @@ function BentoFillerCard({ size }: { size: BentoTileSize }) {
     <div
       aria-hidden
       className={cn(
-        "pointer-events-none flex h-full min-h-40 select-none flex-col justify-between rounded-lg border border-dashed border-border/50 bg-muted/10 p-4 max-sm:hidden",
+        "pointer-events-none flex h-full min-h-40 select-none flex-col justify-between rounded-lg border border-dashed border-border bg-card p-4 max-sm:hidden",
+        SURFACE_ELEVATED,
         TILE_SIZE_CLASS[size],
       )}
     >

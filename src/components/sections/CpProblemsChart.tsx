@@ -3,7 +3,7 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { CpDataSourceIndicator } from "@/components/sections/CpLiveIndicator";
 import type { CpDataSource } from "@/components/sections/CpLiveIndicator";
 import type { CpProblemSlice } from "@/types/portfolio";
-import { CP_CHART_ROW } from "@/lib/layout";
+import { CP_CHART_ROW, SURFACE_ELEVATED } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 
 interface CpProblemsChartProps {
@@ -85,7 +85,8 @@ export function CpProblemsChart({
   return (
     <div
       className={cn(
-        "relative min-h-0 overflow-y-auto rounded-md border border-border bg-accent/10 transition-opacity",
+        "relative min-h-0 overflow-y-auto rounded-md border border-border bg-card transition-opacity dark:bg-accent/10",
+        SURFACE_ELEVATED,
         loading && "opacity-60",
         className,
       )}

@@ -6,7 +6,7 @@ import { CpProblemsChart } from "@/components/sections/CpProblemsChart";
 import { CpTopicsChart } from "@/components/sections/CpTopicsChart";
 import { Badge } from "@/components/ui/badge";
 import { useCodolioStats } from "@/hooks/useCodolioStats";
-import { SECTION_SCROLL_MT } from "@/lib/layout";
+import { SECTION_SCROLL_MT, SURFACE_ELEVATED } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { ExternalLink } from "lucide-react";
 
@@ -43,7 +43,12 @@ function TableView({
   loading: boolean;
 }) {
   return (
-    <div className="h-full overflow-x-auto overflow-y-hidden rounded-md border border-border">
+    <div
+      className={cn(
+        "h-full overflow-x-auto overflow-y-hidden rounded-md border border-border bg-card",
+        SURFACE_ELEVATED,
+      )}
+    >
       <table className="w-full min-w-[640px] table-fixed text-sm">
         <colgroup>
           <col className="w-[24%]" />

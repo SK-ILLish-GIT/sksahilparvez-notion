@@ -26,7 +26,7 @@ export function BookmarkBlock({
       rel={external ? "noopener noreferrer" : undefined}
       data-cursor-hint={`Open ${label}`}
       className={cn(
-        "group flex items-center gap-3 rounded-md border border-border bg-card p-3 transition-colors hover:bg-notion-hover",
+        "group flex items-center gap-3 rounded-md border border-border bg-card p-3 transition-colors hover:bg-notion-hover surface-elevated",
         className,
       )}
     >

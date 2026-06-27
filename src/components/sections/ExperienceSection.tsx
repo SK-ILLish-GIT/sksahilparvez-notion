@@ -11,7 +11,7 @@ import {
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
-import { SECTION_SCROLL_MT } from "@/lib/layout";
+import { SECTION_SCROLL_MT, SURFACE_ELEVATED } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { MapPin } from "lucide-react";
 
@@ -151,7 +151,7 @@ function TimelineView({
             type="button"
             onClick={() => onSelect(item)}
             data-cursor-hint="Open experience details"
-            className="mb-3 w-full rounded-md border border-border bg-card p-4 text-left transition-colors hover:bg-notion-hover"
+            className="mb-3 w-full rounded-md border border-border bg-card p-4 text-left transition-colors hover:bg-notion-hover surface-elevated"
           >
             <div className="flex flex-wrap items-start justify-between gap-2">
               <div className="flex min-w-0 items-center gap-3">
@@ -252,7 +252,12 @@ function StackBadges({
 
 function TableView({ onSelect }: { onSelect: (item: ExperienceItem) => void }) {
   return (
-    <div className="overflow-x-auto rounded-lg border border-border">
+    <div
+      className={cn(
+        "overflow-x-auto rounded-lg border border-border bg-card",
+        SURFACE_ELEVATED,
+      )}
+    >
       <div
         className={cn(
           "grid bg-muted/40 px-4 py-2 text-xs font-medium text-muted-foreground",

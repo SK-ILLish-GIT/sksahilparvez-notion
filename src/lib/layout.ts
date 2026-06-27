@@ -22,6 +22,9 @@ export const SECTION_STACK =
 /** Anchor scroll offset for in-page section links */
 export const SECTION_SCROLL_MT = "scroll-mt-8 md:scroll-mt-10";
 
+/** Light-mode card lift (no shadow in dark) */
+export const SURFACE_ELEVATED = "surface-elevated";
+
 /** Hero cover height */
 export const HERO_COVER = "relative h-44 w-full sm:h-52 md:h-60";
 
