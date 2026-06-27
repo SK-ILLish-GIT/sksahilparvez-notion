@@ -15,6 +15,11 @@ import {
 } from "@/components/projects/ProjectDetailsBody";
 import { useGithubProject } from "@/hooks/useGithubProject";
 import { cn } from "@/lib/utils";
+import {
+  BENTO_WIDGET_SPAN,
+  PROJECTS_BENTO_GRID,
+  PROJECT_BENTO_SPAN,
+} from "@/lib/layout";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { SOCIAL_LOGOS } from "@/lib/social-logos";
 import { ExternalLink, Star } from "lucide-react";
@@ -22,17 +27,13 @@ import { ExternalLink, Star } from "lucide-react";
 type BentoTileSize = "small" | "wide" | "tall";
 
 const BENTO_GRID_CLASS: Record<ProjectItem["bentoSize"], string> = {
-  large: "sm:col-span-2 sm:row-span-2",
-  wide: "sm:col-span-2",
-  tall: "sm:row-span-2",
-  small: "",
+  large: PROJECT_BENTO_SPAN.large,
+  wide: PROJECT_BENTO_SPAN.wide,
+  tall: PROJECT_BENTO_SPAN.tall,
+  small: PROJECT_BENTO_SPAN.small,
 };
 
-const TILE_SIZE_CLASS: Record<BentoTileSize, string> = {
-  small: "",
-  wide: "sm:col-span-2",
-  tall: "sm:row-span-2",
-};
+const TILE_SIZE_CLASS: Record<BentoTileSize, string> = BENTO_WIDGET_SPAN;
 
 type BentoLayoutItem =
   | { type: "project"; id: string }
@@ -492,7 +493,7 @@ export function ProjectsSection() {
           <p className="mt-1 text-xs text-muted-foreground">Database</p>
         </NotionBlock>
 
-        <div className="mt-4 grid auto-rows-[10rem] grid-flow-dense grid-cols-1 gap-3 sm:grid-cols-2 sm:auto-rows-[11rem] lg:grid-cols-3 lg:auto-rows-[12rem]">
+        <div className={cn("mt-4", PROJECTS_BENTO_GRID)}>
           {BENTO_LAYOUT.map((item) => {
             if (item.type === "widget") {
               return (

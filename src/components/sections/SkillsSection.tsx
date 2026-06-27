@@ -6,6 +6,8 @@ import {
   NotionSubheading,
 } from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
+import { SKILLS_INNER_X } from "@/lib/layout";
+import { cn } from "@/lib/utils";
 
 function SkillTile({ skill }: { skill: SkillItem }) {
   return (
@@ -57,7 +59,12 @@ export function SkillsSection() {
           </p>
         </NotionBlock>
 
-        <div className="mt-4 space-y-4 rounded-lg border border-border bg-card/40 px-3 py-3 sm:px-4">
+        <div
+          className={cn(
+            "mt-4 space-y-4 rounded-lg border border-border bg-card/40",
+            SKILLS_INNER_X,
+          )}
+        >
           {portfolio.skills.map((group) => (
             <SkillGalleryGroup key={group.id} group={group} />
           ))}

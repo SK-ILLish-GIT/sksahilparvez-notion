@@ -11,6 +11,7 @@ import {
 import { NotionPropertyTable } from "@/components/notion/NotionPropertyTable";
 import type { NotionPropertyRow } from "@/components/notion/NotionPropertyTable";
 import { FadeIn } from "@/components/notion/FadeIn";
+import { CERT_CARD_MOBILE, CERTS_CAROUSEL, CERTS_SCROLL } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 import { Check, Circle, CircleDashed, ExternalLink } from "lucide-react";
 
@@ -214,10 +215,10 @@ export function CertificationsSection() {
         </NotionBlock>
 
         <div className="mt-4 overflow-hidden rounded-lg border border-border bg-card">
-          <div className="-mx-px overflow-x-auto sm:overflow-visible">
+          <div className={CERTS_SCROLL}>
             <div
               className={cn(
-                "flex min-w-max snap-x snap-mandatory sm:min-w-0 sm:grid sm:snap-none sm:items-stretch",
+                CERTS_CAROUSEL,
                 boardGridClass(boardColumns.length),
               )}
             >
@@ -228,7 +229,7 @@ export function CertificationsSection() {
                   <div
                     key={col.status}
                     className={cn(
-                      "flex w-[min(260px,calc(100vw-2rem))] shrink-0 snap-start flex-col sm:w-auto sm:shrink",
+                      CERT_CARD_MOBILE,
                       !isLast && "border-r border-border",
                       col.columnClass,
                     )}

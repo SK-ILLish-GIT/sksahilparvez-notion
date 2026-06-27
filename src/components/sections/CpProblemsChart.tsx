@@ -3,6 +3,7 @@ import { Cell, Pie, PieChart, ResponsiveContainer, Tooltip } from "recharts";
 import { CpDataSourceIndicator } from "@/components/sections/CpLiveIndicator";
 import type { CpDataSource } from "@/components/sections/CpLiveIndicator";
 import type { CpProblemSlice } from "@/types/portfolio";
+import { CP_CHART_ROW } from "@/lib/layout";
 import { cn } from "@/lib/utils";
 
 interface CpProblemsChartProps {
@@ -89,7 +90,7 @@ export function CpProblemsChart({
         className,
       )}
     >
-      <div className="mx-auto flex h-full w-full flex-col items-stretch justify-center gap-0 overflow-y-auto sm:flex-row sm:items-center">
+      <div className={CP_CHART_ROW}>
         <div className="relative flex flex-1 items-center justify-center px-2 py-2 sm:w-[65%] sm:flex-none">
           <CpDataSourceIndicator
             source={dataSource}

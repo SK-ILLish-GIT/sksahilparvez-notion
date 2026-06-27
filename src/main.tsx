@@ -19,6 +19,8 @@ import { EducationSection } from "@/components/sections/EducationSection";
 import { CertificationsSection } from "@/components/sections/CertificationsSection";
 import { AchievementsSection } from "@/components/sections/AchievementsSection";
 import { ContactSection } from "@/components/sections/ContactSection";
+import { PAGE_PB, PAGE_X } from "@/lib/layout";
+import { cn } from "@/lib/utils";
 import "@/index.css";
 
 function App() {
@@ -34,7 +36,7 @@ function App() {
           <main className="min-h-screen w-full min-w-0">
             <MobileNavBar activeSection={activeSection} />
             <PageHeader />
-            <div className="mx-auto max-w-[900px] px-4 pb-6 sm:px-12 sm:pb-10">
+            <div className={cn("mx-auto max-w-[900px]", PAGE_X, PAGE_PB)}>
               <NotionDivider />
               <AboutSection />
               <EducationSection />

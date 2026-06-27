@@ -3,6 +3,8 @@ import { CalBookingButton } from "@/components/booking/CalBookingButton";
 import { BookmarkBlock } from "@/components/notion/BookmarkBlock";
 import { NotionBlock, NotionHeading } from "@/components/notion/NotionBlock";
 import { FadeIn } from "@/components/notion/FadeIn";
+import { CONTACT_GRID } from "@/lib/layout";
+import { cn } from "@/lib/utils";
 
 export function ContactSection() {
   return (
@@ -13,7 +15,7 @@ export function ContactSection() {
           <p className="mt-1 text-xs text-muted-foreground">Bookmarks</p>
         </NotionBlock>
 
-        <div className="mt-4 grid gap-2 sm:grid-cols-2">
+        <div className={cn("mt-4", CONTACT_GRID)}>
           {portfolio.contact.map((link) => (
             <BookmarkBlock
               key={link.label}
