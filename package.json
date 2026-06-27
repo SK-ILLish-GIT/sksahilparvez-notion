@@ -16,7 +16,7 @@
     "format": "prettier --write .",
     "format:check": "prettier --check .",
     "preview": "vite preview",
-    "prepare": "husky",
+    "prepare": "node .husky/install.mjs",
     "sync:codolio": "node scripts/sync-codolio.mjs"
   },
   "dependencies": {
